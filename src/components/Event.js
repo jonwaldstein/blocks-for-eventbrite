@@ -67,7 +67,6 @@ export default function Event( {
 	}, [ id ] );
 
 	const { signUpButtonBackgroundColor } = colors;
-	const { name: venueName, address } = venue;
 
 	return (
 		<article
@@ -213,45 +212,57 @@ export default function Event( {
 										) }
 									</time>
 								</div>
-								<div
-									className={ cx( 'event__details--venue' ) }
-								>
-									<p
+								{ venue && (
+									<div
 										className={ cx(
-											'font-sans',
-											'text-grey-dark',
-											'text-xs',
-											'm-0',
-											'truncate'
+											'event__details--venue'
 										) }
 									>
-										{ venueName }
-									</p>
+										{ venue.name && (
+											<p
+												className={ cx(
+													'font-sans',
+													'text-grey-dark',
+													'text-xs',
+													'm-0',
+													'truncate'
+												) }
+											>
+												{ venue.name }
+											</p>
+										) }
+										{ venue.address?.city &&
+											venue.address?.region && (
+												<p
+													className={ cx(
+														'font-sans',
+														'text-grey-dark',
+														'text-xs',
+														'm-0',
+														'truncate'
+													) }
+												>
+													{ venue.address.city },{ ' ' }
+													{ venue.address.region }
+												</p>
+											) }
+									</div>
+								) }
+								{ cost && (
 									<p
 										className={ cx(
-											'font-sans',
+											'text-sm',
 											'text-grey-dark',
-											'text-xs',
-											'm-0',
-											'truncate'
+											'flex',
+											'items-center',
+											'font-sans',
+											'mb-2',
+											'mt-0'
 										) }
 									>
-										{ address.city }, { address.region }
+										<span>{ cost }</span>
 									</p>
-								</div>
-								<p
-									className={ cx(
-										'text-sm',
-										'text-grey-dark',
-										'flex',
-										'items-center',
-										'font-sans',
-										'mb-2',
-										'mt-0'
-									) }
-								>
-									<span>{ cost }</span>
-								</p>
+								) }
 							</div>
 							<div
 								className={ cx(
