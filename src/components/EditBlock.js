@@ -28,6 +28,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 		status,
 		orderBy,
 		noEventsText,
+		nameFilter,
 	} = attributes;
 
 	const [ apiKeyState, setApiKeyState ] = useState( apiKey );
@@ -154,6 +155,18 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							onChange={ ( newNoEventsText ) =>
 								setAttributes( {
 									noEventsText: newNoEventsText,
+								} )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							label="Event name filter"
+							help="This will only display the events based on these event title keywords."
+							value={ nameFilter }
+							onChange={ ( newNameFilter ) =>
+								setAttributes( {
+									nameFilter: newNameFilter,
 								} )
 							}
 						/>
