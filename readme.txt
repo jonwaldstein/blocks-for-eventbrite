@@ -43,6 +43,9 @@ As long as you have an Eventbrite account you can get the api token key [here](h
 
 == Changelog ==
 
+= 1.0.2 =
+* add: name_filter to eventbrite settings to filter by event title keywords
+
 = 1.0.1 =
 * fix: conditionally display venue details to prevent event from not displaying
 
