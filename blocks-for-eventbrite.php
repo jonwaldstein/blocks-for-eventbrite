@@ -130,8 +130,14 @@ function render_blocks_for_eventbrite_card($attributes)
         $status = $attributes['status'] ? $attributes['status'] : 'live';
         $orderBy = $attributes['orderBy'] ? $attributes['orderBy'] : 'start_asc';
 
+        // make GET request to eventbrite api to get the user's organization ID
+        $user_reponse = wp_remote_get("https://www.eventbriteapi.com/v3/users/me/?token={$attributes['apiKey']}");
+
+        // decode fetched data to json
+        $user_data = json_decode($user_reponse['body'], true);
+
         // make GET request to eventbrite api based on user's attribute settings
-        $response = wp_remote_get("https://www.eventbriteapi.com/v3/users/me/events/?token={$attributes['apiKey']}&expand=ticket_classes,venue&status={$status}&order_by={$orderBy}&time_filter=current_future");
+        $response = wp_remote_get("https://www.eventbriteapi.com/v3/organizations/{$user_data['id']}/events/?token={$attributes['apiKey']}&expand=ticket_classes,venue&status={$status}&order_by={$orderBy}&time_filter=current_future");
 
         // decode fetched data to json
         $data = json_decode($response['body'], true);
