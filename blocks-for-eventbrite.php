@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Blocks for Eventbrite
  * Description:     Gutenberg blocks that display eventbrite events
- * Version:         1.0.0
+ * Version:         1.0.2
  * Author:          Jon Waldstein
  * Author URI:      https://jonwaldstein.com
  * License:         GPL-2.0-or-later
@@ -129,6 +129,7 @@ function render_blocks_for_eventbrite_card($attributes)
 
         $status = $attributes['status'] ? $attributes['status'] : 'live';
         $orderBy = $attributes['orderBy'] ? $attributes['orderBy'] : 'start_asc';
+        $nameFilter = $attributes['nameFilter'] ? $attributes['nameFilter'] : null;
 
         // make GET request to eventbrite api to get the user's organization ID
         $user_response = wp_remote_get("https://www.eventbriteapi.com/v3/users/me/?token={$attributes['apiKey']}");

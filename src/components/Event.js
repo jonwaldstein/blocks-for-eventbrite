@@ -133,7 +133,8 @@ export default function Event( {
 										'uppercase',
 										'my-0',
 										'font-sans',
-										'leading-tight'
+										'leading-tight',
+										'whitespace-no-wrap'
 									) }
 								>
 									<time>{ format( 'M', startDate ) }</time>
@@ -144,7 +145,8 @@ export default function Event( {
 										'text-xl',
 										'text-grey-800',
 										'my-0',
-										'font-sans'
+										'font-sans',
+										'whitespace-no-wrap'
 									) }
 								>
 									<time>{ format( 'd', startDate ) }</time>

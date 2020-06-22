@@ -81,6 +81,9 @@ registerBlockType( 'blocks-for-eventbrite/events-card', {
 			default:
 				'There are no events at this time. Please check back for upcoming events.',
 		},
+		nameFilter: {
+			type: 'string',
+		},
 	},
 
 	/**

@@ -2,7 +2,7 @@
 Contributors:      jonwaldstein
 Tags:              block
 Requires at least: 5.3.2
-Tested up to:      5.4
+Tested up to:      5.4.1
 Stable tag:        0.1.0
 Requires PHP:      7.0.0
 License:           GPL-2.0-or-later
@@ -42,6 +42,9 @@ As long as you have an Eventbrite account you can get the api token key [here](h
 1. Eventbrite Event Card
 
 == Changelog ==
+
+= 1.0.2 =
+* add: name_filter to eventbrite settings to filter by event title keywords
 
 = 1.0.1 =
 * fix: conditionally display venue details to prevent event from not displaying
