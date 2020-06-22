@@ -43,6 +43,9 @@ As long as you have an Eventbrite account you can get the api token key [here](h
 
 == Changelog ==
 
+= 1.0.3 =
+* change: events api request to use /v3/organizations/id/events/ endpoint
+
 = 1.0.2 =
 * add: name_filter to eventbrite settings to filter by event title keywords
 
