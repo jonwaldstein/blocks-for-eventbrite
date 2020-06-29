@@ -18,7 +18,7 @@ export default function EventList( { events, attributes } ) {
 						description={ event.description.text }
 						url={ event.url }
 						summary={ event.summary }
-						cost={ event.ticket_classes[ 0 ].cost?.display }
+						cost={ event.ticket_classes?.[ 0 ]?.cost?.display }
 						startDate={ new Date( event.start.utc ) }
 						image={ event.logo?.original.url }
 						status={ event.status }

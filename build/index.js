@@ -23180,6 +23180,11 @@ function EditBlock(_ref) {
       apiKeyError = _useState6[0],
       setApiKeyError = _useState6[1];
 
+  var _useState7 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState8 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState7, 2),
+      organizationName = _useState8[0],
+      setOrganizationName = _useState8[1];
+
   var defaultColors = [{
     name: 'orange',
     color: '#d6472b'
@@ -23187,8 +23192,11 @@ function EditBlock(_ref) {
 
   var testApiKey = function testApiKey() {
     setApiKeyLoading(true);
-    axios__WEBPACK_IMPORTED_MODULE_5___default.a.get("https://www.eventbriteapi.com/v3/users/me/?token=".concat(apiKeyState)).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_5___default.a.get("https://www.eventbriteapi.com/v3/users/me/organizations/?token=".concat(apiKeyState)).then(function (response) {
+      var _response$data$organi;
+
       setApiKeyLoading(false);
+      setOrganizationName((_response$data$organi = response.data.organizations) === null || _response$data$organi === void 0 ? void 0 : _response$data$organi[0].name);
       setAttributes({
         apiKey: apiKeyState
       });
@@ -23223,7 +23231,9 @@ function EditBlock(_ref) {
     }
   })), apiKeyError && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
     className: cx('text-red-700')
-  }, apiKeyError)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+  }, apiKeyError)), organizationName && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
+    className: cx('text-green-700')
+  }, "Organization name: ", organizationName)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
     isSecondary: true,
     isBusy: apiKeyLoading,
     onClick: function onClick() {
@@ -23510,7 +23520,7 @@ function EventList(_ref) {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: cx('flex', 'flex-wrap', 'justify-center')
   }, (events === null || events === void 0 ? void 0 : events.length) > 0 ? events.map(function (event) {
-    var _event$ticket_classes, _event$logo;
+    var _event$ticket_classes, _event$ticket_classes2, _event$ticket_classes3, _event$logo;
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Event__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: event.id,
@@ -23519,7 +23529,7 @@ function EventList(_ref) {
       description: event.description.text,
       url: event.url,
       summary: event.summary,
-      cost: (_event$ticket_classes = event.ticket_classes[0].cost) === null || _event$ticket_classes === void 0 ? void 0 : _event$ticket_classes.display,
+      cost: (_event$ticket_classes = event.ticket_classes) === null || _event$ticket_classes === void 0 ? void 0 : (_event$ticket_classes2 = _event$ticket_classes[0]) === null || _event$ticket_classes2 === void 0 ? void 0 : (_event$ticket_classes3 = _event$ticket_classes2.cost) === null || _event$ticket_classes3 === void 0 ? void 0 : _event$ticket_classes3.display,
       startDate: new Date(event.start.utc),
       image: (_event$logo = event.logo) === null || _event$logo === void 0 ? void 0 : _event$logo.original.url,
       status: event.status,

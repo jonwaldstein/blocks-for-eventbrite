@@ -34,6 +34,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 	const [ apiKeyState, setApiKeyState ] = useState( apiKey );
 	const [ apiKeyLoading, setApiKeyLoading ] = useState( false );
 	const [ apiKeyError, setApiKeyError ] = useState( false );
+	const [ organizationName, setOrganizationName ] = useState( false );
 
 	const defaultColors = [ { name: 'orange', color: '#d6472b' } ];
 
@@ -41,10 +42,11 @@ export default function EditBlock( { attributes, setAttributes } ) {
 		setApiKeyLoading( true );
 		axios
 			.get(
-				`https://www.eventbriteapi.com/v3/users/me/?token=${ apiKeyState }`
+				`https://www.eventbriteapi.com/v3/users/me/organizations/?token=${ apiKeyState }`
 			)
 			.then( ( response ) => {
 				setApiKeyLoading( false );
+				setOrganizationName( response.data.organizations?.[ 0 ].name );
 				setAttributes( { apiKey: apiKeyState } );
 				setApiKeyError( false );
 				setAttributes( {
@@ -89,6 +91,13 @@ export default function EditBlock( { attributes, setAttributes } ) {
 						<PanelRow>
 							<p className={ cx( 'text-red-700' ) }>
 								{ apiKeyError }
+							</p>
+						</PanelRow>
+					) }
+					{ organizationName && (
+						<PanelRow>
+							<p className={ cx( 'text-green-700' ) }>
+								Organization name: { organizationName }
 							</p>
 						</PanelRow>
 					) }
