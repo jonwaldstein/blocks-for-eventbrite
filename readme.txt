@@ -43,6 +43,12 @@ As long as you have an Eventbrite account you can get the api token key [here](h
 
 == Changelog ==
 
+= 1.0.5 =
+* change: get organization id from /v3/users/me/organizations/ endpoint
+
+= 1.0.4 =
+* fix: bring back name_filter after removing by accident
+
 = 1.0.3 =
 * change: events api request to use /v3/organizations/id/events/ endpoint
 
