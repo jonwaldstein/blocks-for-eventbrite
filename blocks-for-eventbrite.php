@@ -132,22 +132,39 @@ function render_blocks_for_eventbrite_card($attributes)
         $nameFilter = $attributes['nameFilter'] ? $attributes['nameFilter'] : null;
 
         // make GET request to eventbrite api to get the user's organization ID
-        $user_response = wp_remote_get("https://www.eventbriteapi.com/v3/users/me/?token={$attributes['apiKey']}");
+        $userResponse = wp_remote_get("https://www.eventbriteapi.com/v3/users/me/organizations?token={$attributes['apiKey']}");
 
         // decode fetched data to json
-        $user_data = json_decode($user_response['body'], true);
+        $userData = json_decode(wp_remote_retrieve_body($userResponse), true);
+
+        // get the organization id
+        $userOrganization = $userData['organizations'][0]['id'];
+
+        // build api call url
+        $organizationEventsUrl = urldecode("https://www.eventbriteapi.com/v3/organizations/{$userOrganization}/events/?" . http_build_query(
+            [
+                'token' => $attributes['apiKey'],
+                'expand' => 'ticket_classes,venue',
+                'status' => $status,
+                'order_by' => $orderBy,
+                'time_filter' => 'current_future',
+                'name_filter' => $nameFilter
+            ],
+            null,
+            '&'
+        ));
 
         // make GET request to eventbrite api based on user's attribute settings
-        $response = wp_remote_get("https://www.eventbriteapi.com/v3/organizations/{$user_data['id']}/events/?token={$attributes['apiKey']}&expand=ticket_classes,venue&status={$status}&order_by={$orderBy}&time_filter=current_future&name_filter={$nameFilter}");
+        $response = wp_remote_get($organizationEventsUrl);
 
         // decode fetched data to json
-        $data = json_decode($response['body'], true);
+        $data = json_decode(wp_remote_retrieve_body($response), true);
 
         // set transient data with current transient key for 1 minute
         set_transient($TRANSIENT_KEY, [
             'events' => $data['events'],
             'attributes' => $attributes,
-            'date' => date('Y-m-d')
+            'date' => date('Y-m-d'),
         ], 60);
 
         // get transient based on current block
@@ -169,6 +186,7 @@ function render_blocks_for_eventbrite_card($attributes)
         [
             'events' => $transient['events'],
             'attributes' => $transient['attributes'],
+            'organizations'   => $userData
         ]
     );
 
