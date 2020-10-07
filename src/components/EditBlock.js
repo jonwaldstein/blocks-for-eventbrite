@@ -12,6 +12,7 @@ import {
 import { InspectorControls } from '@wordpress/block-editor';
 import { dispatch, select } from '@wordpress/data';
 import axios from 'axios';
+import { __ } from '@wordpress/i18n';
 import { getLocalizeData } from '../utilities';
 import Event from '../components/Event';
 import styles from '../style.module.css';
@@ -71,14 +72,20 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							value={ apiKeyState }
 							help={
 								<p>
-									Get api token{ ' ' }
+									{ __(
+										'Get api token',
+										'blocks-for-eventbrite'
+									) }{ ' ' }
 									<a
 										href="https://www.eventbrite.com/platform/api-keys"
 										target="_blank"
 										rel="noopener noreferrer"
 										className={ cx( 'text-blue-500' ) }
 									>
-										here
+										{ __(
+											'here',
+											'blocks-for-eventbrite'
+										) }
 									</a>
 								</p>
 							}
@@ -97,7 +104,11 @@ export default function EditBlock( { attributes, setAttributes } ) {
 					{ organizationName && (
 						<PanelRow>
 							<p className={ cx( 'text-green-700' ) }>
-								Organization name: { organizationName }
+								{ __(
+									'Organization name',
+									'blocks-for-eventbrite'
+								) }
+								: { organizationName }
 							</p>
 						</PanelRow>
 					) }
@@ -107,7 +118,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							isBusy={ apiKeyLoading }
 							onClick={ () => testApiKey( apiKeyState ) }
 						>
-							Save Api Key
+							{ __( 'Save Api Key', 'blocks-for-eventbrite' ) }
 						</Button>
 						<div className="jw-text-center">
 							{ apiKeyLoading && <Spinner /> }
@@ -120,9 +131,24 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							label="Status"
 							value={ status }
 							options={ [
-								{ label: 'Live', value: 'live' },
-								{ label: 'Draft', value: 'draft' },
-								{ label: 'All', value: 'all' },
+								{
+									label: __(
+										'Live',
+										'blocks-for-eventbrite'
+									),
+									value: 'live',
+								},
+								{
+									label: __(
+										'Draft',
+										'blocks-for-eventbrite'
+									),
+									value: 'draft',
+								},
+								{
+									label: __( 'All', 'blocks-for-eventbrite' ),
+									value: 'all',
+								},
 							] }
 							onChange={ ( newStatus ) => {
 								setAttributes( { status: newStatus } );
@@ -135,19 +161,31 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							value={ orderBy }
 							options={ [
 								{
-									label: 'Start Date Ascending',
+									label: __(
+										'Start Date Ascending',
+										'blocks-for-eventbrite'
+									),
 									value: 'start_asc',
 								},
 								{
-									label: 'Start Date Descending',
+									label: __(
+										'Start Date Descending',
+										'blocks-for-eventbrite'
+									),
 									value: 'start_desc',
 								},
 								{
-									label: 'Name Ascending',
+									label: __(
+										'Name Ascending',
+										'blocks-for-eventbrite'
+									),
 									value: 'name_asc',
 								},
 								{
-									label: 'Name Descending',
+									label: __(
+										'Name Descending',
+										'blocks-for-eventbrite'
+									),
 									value: 'name_desc',
 								},
 							] }
@@ -158,8 +196,14 @@ export default function EditBlock( { attributes, setAttributes } ) {
 					</PanelRow>
 					<PanelRow>
 						<TextControl
-							label="No events message"
-							help="This is the text that displays in place of your events when there are none to display."
+							label={ __(
+								'No events message',
+								'blocks-for-eventbrite'
+							) }
+							help={ __(
+								'This is the text that displays in place of your events when there are none to display.',
+								'blocks-for-eventbrite'
+							) }
 							value={ noEventsText }
 							onChange={ ( newNoEventsText ) =>
 								setAttributes( {
@@ -170,8 +214,14 @@ export default function EditBlock( { attributes, setAttributes } ) {
 					</PanelRow>
 					<PanelRow>
 						<TextControl
-							label="Event name filter"
-							help="This will only display the events based on these event title keywords."
+							label={ __(
+								'Event name filter',
+								'blocks-for-eventbrite'
+							) }
+							help={ __(
+								'This will only display the events based on these event title keywords.',
+								'blocks-for-eventbrite'
+							) }
 							value={ nameFilter }
 							onChange={ ( newNameFilter ) =>
 								setAttributes( {
@@ -181,10 +231,18 @@ export default function EditBlock( { attributes, setAttributes } ) {
 						/>
 					</PanelRow>
 				</PanelBody>
-				<PanelBody title="Eventbrite Design Settings">
+				<PanelBody
+					title={ __(
+						'Eventbrite Design Settings',
+						'blocks-for-eventbrite'
+					) }
+				>
 					<PanelRow>
 						<label htmlFor="secondButtonBackgroundColor">
-							Signup button background color
+							{ __(
+								'Signup button background color',
+								'blocks-for-eventbrite'
+							) }
 						</label>
 					</PanelRow>
 					<PanelRow>
@@ -237,22 +295,27 @@ export default function EditBlock( { attributes, setAttributes } ) {
 									'flex-auto'
 								) }
 							>
-								An Api Token Key is required. Please enter your
-								Eventbrite Api Token Key in the block settings.
+								{ __(
+									'An Api Token Key is required. Please enter your Eventbrite Api Token Key in the block settings.',
+									'blocks-for-eventbrite'
+								) }
 							</span>
 						</div>
 					</div>
 				) : (
 					<div className="blocks-for-eventbrite-css-wrapper">
 						<p className={ cx( 'font-sans', 'text-center' ) }>
-							This is a static preview of how your event card will
-							look. Each event pulled from your Eventbrite account
-							will be displayed in this format on the
-							front&ndash;end of your website.
+							{ __(
+								'This is a static preview of how your event card will look.  Each event pulled from your Eventbrite account will be displayed in this format on the frontend of your website.',
+								'blocks-for-eventbrite'
+							) }
 						</p>
 						<Event
 							className={ cx( 'mx-auto' ) }
-							title={ 'Event Title' }
+							title={ __(
+								'Event Title',
+								'blocks-for-eventbrite'
+							) }
 							description={ 'Event description' }
 							summary={ 'Event description summary' }
 							cost={ '$25' }
@@ -267,7 +330,10 @@ export default function EditBlock( { attributes, setAttributes } ) {
 								signUpButtonBackgroundColor,
 							} }
 							venue={ {
-								name: 'Venue name',
+								name: __(
+									'Venue name',
+									'blocks-for-eventbrite'
+								),
 								address: {
 									city: 'Providence',
 									region: 'RI',

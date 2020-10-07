@@ -23,7 +23,7 @@ registerBlockType( 'blocks-for-eventbrite/events-card', {
 	 * This is the display title for your block, which can be translated with `i18n` functions.
 	 * The block inserter will show this name.
 	 */
-	title: __( 'Eventbrite Event Cards', 'sandtrail-studios' ),
+	title: __( 'Eventbrite Event Cards', 'blocks-for-eventbrite' ),
 
 	/**
 	 * This is a short description for your block, can be translated with `i18n` functions.
@@ -31,7 +31,7 @@ registerBlockType( 'blocks-for-eventbrite/events-card', {
 	 */
 	description: __(
 		'Display eventbrite events on your website.',
-		'sandtrail-studios'
+		'blocks-for-eventbrite'
 	),
 
 	/**
@@ -45,6 +45,14 @@ registerBlockType( 'blocks-for-eventbrite/events-card', {
 	 * These can be any of WordPress’ Dashicons, or a custom svg element.
 	 */
 	icon: 'calendar-alt',
+
+	/** Make it easier to discover a block with keyword aliases.
+	 * These can be localised so your keywords work across locales.
+	 */
+	keywords: [
+		__( 'events', 'blocks-for-eventbrite' ),
+		__( 'eventbrite', 'blocks-for-eventbrite' ),
+	],
 
 	/**
 	 * Optional block extended support features.
@@ -78,8 +86,10 @@ registerBlockType( 'blocks-for-eventbrite/events-card', {
 		},
 		noEventsText: {
 			type: 'string',
-			default:
+			default: __(
 				'There are no events at this time. Please check back for upcoming events.',
+				'blocks-for-eventbrite'
+			),
 		},
 		nameFilter: {
 			type: 'string',

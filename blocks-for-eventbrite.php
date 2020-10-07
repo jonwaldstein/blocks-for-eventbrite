@@ -8,7 +8,7 @@
  * Author URI:      https://jonwaldstein.com
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:     sandtrail-studios
+ * Text Domain:     blocks-for-eventbrite
  *
  * @package         sandtrail-studios
  */
@@ -51,6 +51,8 @@ add_action('init', function () {
         BLOCKS_FOR_EVENTBRITE_SCRIPT_ASSET['version']
     );
 
+    wp_set_script_translations(BLOCKS_FOR_EVENTBRITE_SCRIPT_NAME, 'blocks-for-eventbrite');
+
     // mock our data in js for the editor
     wp_localize_script(
         BLOCKS_FOR_EVENTBRITE_SCRIPT_NAME,
@@ -83,6 +85,12 @@ add_action('init', function () {
         ]
     ));
 });
+
+function myguten_set_script_translations()
+{
+    wp_set_script_translations('myguten-script', 'myguten');
+}
+add_action('init', 'myguten_set_script_translations');
 
 /**
  * Add a block category for "Eventbrite Blocks" if it doesn't exist already.

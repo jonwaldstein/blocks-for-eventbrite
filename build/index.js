@@ -23023,13 +23023,13 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('blo
    * This is the display title for your block, which can be translated with `i18n` functions.
    * The block inserter will show this name.
    */
-  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Eventbrite Event Cards', 'sandtrail-studios'),
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Eventbrite Event Cards', 'blocks-for-eventbrite'),
 
   /**
    * This is a short description for your block, can be translated with `i18n` functions.
    * It will be shown in the Block Tab in the Settings Sidebar.
    */
-  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Display eventbrite events on your website.', 'sandtrail-studios'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Display eventbrite events on your website.', 'blocks-for-eventbrite'),
 
   /**
    * Blocks are grouped into categories to help users browse and discover them.
@@ -23042,6 +23042,11 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('blo
    * These can be any of WordPress’ Dashicons, or a custom svg element.
    */
   icon: 'calendar-alt',
+
+  /** Make it easier to discover a block with keyword aliases.
+   * These can be localised so your keywords work across locales.
+   */
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('events', 'blocks-for-eventbrite'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('eventbrite', 'blocks-for-eventbrite')],
 
   /**
    * Optional block extended support features.
@@ -23074,7 +23079,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('blo
     },
     noEventsText: {
       type: 'string',
-      default: 'There are no events at this time. Please check back for upcoming events.'
+      default: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('There are no events at this time. Please check back for upcoming events.', 'blocks-for-eventbrite')
     },
     nameFilter: {
       type: 'string'
@@ -23132,12 +23137,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _utilities__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utilities */ "./src/utilities/index.js");
-/* harmony import */ var _components_Event__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Event */ "./src/components/Event.js");
-/* harmony import */ var _style_module_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../style.module.css */ "./src/style.module.css");
-/* harmony import */ var _style_module_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_style_module_css__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var classnames_bind__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! classnames/bind */ "./node_modules/classnames/bind.js");
-/* harmony import */ var classnames_bind__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(classnames_bind__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _utilities__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utilities */ "./src/utilities/index.js");
+/* harmony import */ var _components_Event__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Event */ "./src/components/Event.js");
+/* harmony import */ var _style_module_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../style.module.css */ "./src/style.module.css");
+/* harmony import */ var _style_module_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_style_module_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var classnames_bind__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! classnames/bind */ "./node_modules/classnames/bind.js");
+/* harmony import */ var classnames_bind__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(classnames_bind__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
@@ -23149,9 +23156,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var cx = classnames_bind__WEBPACK_IMPORTED_MODULE_9___default.a.bind(_style_module_css__WEBPACK_IMPORTED_MODULE_8___default.a);
 
-var _getLocalizeData = Object(_utilities__WEBPACK_IMPORTED_MODULE_6__["getLocalizeData"])('assets'),
+var cx = classnames_bind__WEBPACK_IMPORTED_MODULE_10___default.a.bind(_style_module_css__WEBPACK_IMPORTED_MODULE_9___default.a);
+
+var _getLocalizeData = Object(_utilities__WEBPACK_IMPORTED_MODULE_7__["getLocalizeData"])('assets'),
     _getLocalizeData2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_getLocalizeData, 1),
     assets = _getLocalizeData2[0];
 
@@ -23220,12 +23228,12 @@ function EditBlock(_ref) {
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextControl"], {
     label: "Api Token Key",
     value: apiKeyState,
-    help: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, "Get api token", ' ', Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
+    help: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Get api token', 'blocks-for-eventbrite'), ' ', Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
       href: "https://www.eventbrite.com/platform/api-keys",
       target: "_blank",
       rel: "noopener noreferrer",
       className: cx('text-blue-500')
-    }, "here")),
+    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('here', 'blocks-for-eventbrite'))),
     onChange: function onChange(newApiKey) {
       setApiKeyState(newApiKey);
     }
@@ -23233,13 +23241,13 @@ function EditBlock(_ref) {
     className: cx('text-red-700')
   }, apiKeyError)), organizationName && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
     className: cx('text-green-700')
-  }, "Organization name: ", organizationName)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Organization name', 'blocks-for-eventbrite'), ": ", organizationName)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
     isSecondary: true,
     isBusy: apiKeyLoading,
     onClick: function onClick() {
       return testApiKey(apiKeyState);
     }
-  }, "Save Api Key"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Save Api Key', 'blocks-for-eventbrite')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "jw-text-center"
   }, apiKeyLoading && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Spinner"], null)))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
     title: "Eventbrite Event Setttings"
@@ -23247,13 +23255,13 @@ function EditBlock(_ref) {
     label: "Status",
     value: status,
     options: [{
-      label: 'Live',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Live', 'blocks-for-eventbrite'),
       value: 'live'
     }, {
-      label: 'Draft',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Draft', 'blocks-for-eventbrite'),
       value: 'draft'
     }, {
-      label: 'All',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('All', 'blocks-for-eventbrite'),
       value: 'all'
     }],
     onChange: function onChange(newStatus) {
@@ -23265,16 +23273,16 @@ function EditBlock(_ref) {
     label: "Order By",
     value: orderBy,
     options: [{
-      label: 'Start Date Ascending',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Start Date Ascending', 'blocks-for-eventbrite'),
       value: 'start_asc'
     }, {
-      label: 'Start Date Descending',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Start Date Descending', 'blocks-for-eventbrite'),
       value: 'start_desc'
     }, {
-      label: 'Name Ascending',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Name Ascending', 'blocks-for-eventbrite'),
       value: 'name_asc'
     }, {
-      label: 'Name Descending',
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Name Descending', 'blocks-for-eventbrite'),
       value: 'name_desc'
     }],
     onChange: function onChange(newOrderBy) {
@@ -23283,8 +23291,8 @@ function EditBlock(_ref) {
       });
     }
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextControl"], {
-    label: "No events message",
-    help: "This is the text that displays in place of your events when there are none to display.",
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('No events message', 'blocks-for-eventbrite'),
+    help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('This is the text that displays in place of your events when there are none to display.', 'blocks-for-eventbrite'),
     value: noEventsText,
     onChange: function onChange(newNoEventsText) {
       return setAttributes({
@@ -23292,8 +23300,8 @@ function EditBlock(_ref) {
       });
     }
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextControl"], {
-    label: "Event name filter",
-    help: "This will only display the events based on these event title keywords.",
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Event name filter', 'blocks-for-eventbrite'),
+    help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('This will only display the events based on these event title keywords.', 'blocks-for-eventbrite'),
     value: nameFilter,
     onChange: function onChange(newNameFilter) {
       return setAttributes({
@@ -23301,10 +23309,10 @@ function EditBlock(_ref) {
       });
     }
   }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
-    title: "Eventbrite Design Settings"
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Eventbrite Design Settings', 'blocks-for-eventbrite')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("label", {
     htmlFor: "secondButtonBackgroundColor"
-  }, "Signup button background color")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ColorPalette"], {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Signup button background color', 'blocks-for-eventbrite'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ColorPalette"], {
     id: "secondButtonBackgroundColor",
     value: signUpButtonBackgroundColor,
     onChange: function onChange(newColor) {
@@ -23325,13 +23333,13 @@ function EditBlock(_ref) {
     size: 32
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
     className: cx('font-medium', 'mr-2', 'text-left', 'flex-auto')
-  }, "An Api Token Key is required. Please enter your Eventbrite Api Token Key in the block settings."))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('An Api Token Key is required. Please enter your Eventbrite Api Token Key in the block settings.', 'blocks-for-eventbrite')))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "blocks-for-eventbrite-css-wrapper"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
     className: cx('font-sans', 'text-center')
-  }, "This is a static preview of how your event card will look. Each event pulled from your Eventbrite account will be displayed in this format on the front\u2013end of your website."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_Event__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('This is a static preview of how your event card will look.  Each event pulled from your Eventbrite account will be displayed in this format on the frontend of your website.', 'blocks-for-eventbrite')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_Event__WEBPACK_IMPORTED_MODULE_8__["default"], {
     className: cx('mx-auto'),
-    title: 'Event Title',
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Event Title', 'blocks-for-eventbrite'),
     description: 'Event description',
     summary: 'Event description summary',
     cost: '$25',
@@ -23342,7 +23350,7 @@ function EditBlock(_ref) {
       signUpButtonBackgroundColor: signUpButtonBackgroundColor
     },
     venue: {
-      name: 'Venue name',
+      name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Venue name', 'blocks-for-eventbrite'),
       address: {
         city: 'Providence',
         region: 'RI'
@@ -23370,12 +23378,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/date */ "@wordpress/date");
 /* harmony import */ var _wordpress_date__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_date__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _tippyjs_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tippyjs/react */ "./node_modules/@tippyjs/react/dist/tippy-react.esm.js");
-/* harmony import */ var _vendor_eventbrite__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../vendor/eventbrite */ "./src/vendor/eventbrite.js");
-/* harmony import */ var _vendor_eventbrite__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_vendor_eventbrite__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _style_module_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../style.module.css */ "./src/style.module.css");
-/* harmony import */ var _style_module_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_style_module_css__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var classnames_bind__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames/bind */ "./node_modules/classnames/bind.js");
-/* harmony import */ var classnames_bind__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames_bind__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _vendor_eventbrite__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../vendor/eventbrite */ "./src/vendor/eventbrite.js");
+/* harmony import */ var _vendor_eventbrite__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_vendor_eventbrite__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _style_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../style.module.css */ "./src/style.module.css");
+/* harmony import */ var _style_module_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_style_module_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var classnames_bind__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames/bind */ "./node_modules/classnames/bind.js");
+/* harmony import */ var classnames_bind__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames_bind__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -23384,7 +23394,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var cx = classnames_bind__WEBPACK_IMPORTED_MODULE_6___default.a.bind(_style_module_css__WEBPACK_IMPORTED_MODULE_5___default.a);
+
+var cx = classnames_bind__WEBPACK_IMPORTED_MODULE_7___default.a.bind(_style_module_css__WEBPACK_IMPORTED_MODULE_6___default.a);
 var baseButtonStyles = ['font-sans', 'antialiased', 'font-semibold', 'text-sm', 'py-1', 'px-4', 'rounded', 'transition', 'duration-300', 'ease-in-out', 'hover:opacity-90', 'focus:opacity-90', 'active:opacity-90'];
 var baseButtonLinkStyles = ['text-blue-700', 'hover:text-black', 'focus:text-black', 'active:text-black', 'underline', 'font-sans', 'antialiased', 'font-semibold', 'text-sm', 'py-1', 'transition', 'duration-200', 'ease-in-out'];
 function Event(_ref) {
@@ -23470,7 +23481,7 @@ function Event(_ref) {
     singleton: target
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("button", {
     className: cx(baseButtonLinkStyles)
-  }, "Details")) : null, status === 'live' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("button", {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Details', 'blocks-for-eventbrite'))) : null, status === 'live' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("button", {
     id: "eventbrite-widget-modal-trigger-".concat(id),
     type: "button",
     className: cx(baseButtonStyles, 'text-white', 'mr-2', {
@@ -23479,7 +23490,7 @@ function Event(_ref) {
     style: {
       backgroundColor: signUpButtonBackgroundColor
     }
-  }, "Sign up") : null)))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_tippyjs_react__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Sign up', 'blocks-for-eventbrite')) : null)))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_tippyjs_react__WEBPACK_IMPORTED_MODULE_3__["default"], {
     singleton: source,
     trigger: "click",
     theme: "light",
