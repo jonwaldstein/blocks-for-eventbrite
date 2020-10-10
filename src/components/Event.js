@@ -43,7 +43,6 @@ const baseButtonLinkStyles = [
 export default function Event( {
 	id,
 	title,
-	description,
 	url,
 	summary,
 	cost,
