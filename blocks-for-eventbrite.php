@@ -50,7 +50,7 @@ add_action('init', function () {
         BLOCKS_FOR_EVENTBRITE_SCRIPT_ASSET['version']
     );
 
-
+    wp_set_script_translations(BLOCKS_FOR_EVENTBRITE_SCRIPT_NAME, 'blocks-for-eventbrite');
 
     // mock our data in js for the editor
     wp_localize_script(
@@ -84,12 +84,6 @@ add_action('init', function () {
         ]
     ));
 });
-
-function myguten_set_script_translations()
-{
-    wp_set_script_translations('myguten-script', 'myguten');
-}
-add_action('init', 'myguten_set_script_translations');
 
 /**
  * Add a block category for "Eventbrite Blocks" if it doesn't exist already.
