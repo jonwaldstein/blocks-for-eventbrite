@@ -1,6 +1,7 @@
 import { useEffect } from '@wordpress/element';
 import { format } from '@wordpress/date';
 import Tippy, { useSingleton } from '@tippyjs/react';
+import { __ } from '@wordpress/i18n';
 import '../vendor/eventbrite';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
@@ -42,7 +43,6 @@ const baseButtonLinkStyles = [
 export default function Event( {
 	id,
 	title,
-	description,
 	url,
 	summary,
 	cost,
@@ -292,7 +292,10 @@ export default function Event( {
 													baseButtonLinkStyles
 												) }
 											>
-												Details
+												{ __(
+													'Details',
+													'blocks-for-eventbrite'
+												) }
 											</button>
 										</Tippy>
 									) : null }
@@ -312,7 +315,10 @@ export default function Event( {
 												backgroundColor: signUpButtonBackgroundColor,
 											} }
 										>
-											Sign up
+											{ __(
+												'Sign up',
+												'blocks-for-eventbrite'
+											) }
 										</button>
 									) : null }
 								</div>
