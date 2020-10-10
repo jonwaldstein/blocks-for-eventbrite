@@ -3,14 +3,13 @@
 /**
  * Plugin Name:     Blocks for Eventbrite
  * Description:     Gutenberg blocks that display eventbrite events
- * Version:         1.0.5
+ * Version:         1.0.6
  * Author:          Jon Waldstein
  * Author URI:      https://jonwaldstein.com
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:     sandtrail-studios
+ * Text Domain:     blocks-for-eventbrite
  *
- * @package         sandtrail-studios
  */
 
 // Exit if accessed directly.
@@ -50,6 +49,8 @@ add_action('init', function () {
         BLOCKS_FOR_EVENTBRITE_SCRIPT_ASSET['dependencies'],
         BLOCKS_FOR_EVENTBRITE_SCRIPT_ASSET['version']
     );
+
+    wp_set_script_translations(BLOCKS_FOR_EVENTBRITE_SCRIPT_NAME, 'blocks-for-eventbrite');
 
     // mock our data in js for the editor
     wp_localize_script(
@@ -100,7 +101,7 @@ add_filter('block_categories', function ($categories) {
         array(
             array(
                 'slug'  => 'blocks-for-eventbrite',
-                'title' => __('Blocks For Eventbrite', 'sandtrail-studios'),
+                'title' => __('Blocks For Eventbrite', 'blocks-for-eventbrite'),
                 'icon'  => null,
             ),
         )
@@ -150,7 +151,7 @@ function render_blocks_for_eventbrite_card($attributes)
                 'time_filter' => 'current_future',
                 'name_filter' => $nameFilter
             ],
-            null,
+            '',
             '&'
         ));
 

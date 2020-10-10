@@ -2,7 +2,7 @@
 Contributors:      jonwaldstein
 Tags:              block
 Requires at least: 5.3.2
-Tested up to:      5.4.2
+Tested up to:      5.5.1
 Stable tag:        0.1.0
 Requires PHP:      7.0.0
 License:           GPL-2.0-or-later
@@ -42,6 +42,9 @@ As long as you have an Eventbrite account you can get the api token key [here](h
 1. Eventbrite Event Card
 
 == Changelog ==
+
+= 1.0.6 =
+* add: Internationalization
 
 = 1.0.5 =
 * change: get organization id from /v3/users/me/organizations/ endpoint
