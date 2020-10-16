@@ -187,7 +187,6 @@ function render_blocks_for_eventbrite_card($attributes)
         [
             'events' => $transient['events'],
             'attributes' => $transient['attributes'],
-            'organizations'   => $userData
         ]
     );
 
