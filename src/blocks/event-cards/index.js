@@ -94,6 +94,14 @@ registerBlockType( 'blocks-for-eventbrite/events-card', {
 		nameFilter: {
 			type: 'string',
 		},
+		dateFormat: {
+			type: 'string',
+			default: 'F j, Y',
+		},
+		timeFormat: {
+			type: 'string',
+			default: 'g:i a',
+		},
 	},
 
 	/**

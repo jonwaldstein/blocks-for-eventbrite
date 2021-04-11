@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Blocks for Eventbrite
  * Description:     Gutenberg blocks that display eventbrite events
- * Version:         1.0.7
+ * Version:         1.0.8
  * Author:          Jon Waldstein
  * Author URI:      https://jonwaldstein.com
  * License:         GPL-2.0-or-later
@@ -80,7 +80,15 @@ add_action('init', function () {
             'noEventsText' => [
                 'type' => 'string',
                 'default' => 'There are no events at this time. Please check back for upcoming events.'
-            ]
+            ],
+            'dateFormat' => [
+                'type' => 'string',
+                'default' => get_option('date_format')
+            ],
+            'timeFormat' => [
+                'type' => 'string',
+                'default' => get_option('time_format')
+            ],
         ]
     ));
 });
@@ -128,9 +136,9 @@ function render_blocks_for_eventbrite_card($attributes)
     // if transient is empty or attributes have changed
     if (!$transient || $transient['attributes'] !== $attributes) {
 
-        $status = $attributes['status'] ? $attributes['status'] : 'live';
-        $orderBy = $attributes['orderBy'] ? $attributes['orderBy'] : 'start_asc';
-        $nameFilter = $attributes['nameFilter'] ? $attributes['nameFilter'] : null;
+        $status = !empty($attributes['status']) ? $attributes['status'] : 'live';
+        $orderBy = !empty($attributes['orderBy']) ? $attributes['orderBy'] : 'start_asc';
+        $nameFilter = !empty($attributes['nameFilter']) ? $attributes['nameFilter'] : null;
 
         // make GET request to eventbrite api to get the user's organization ID
         $userResponse = wp_remote_get("https://www.eventbriteapi.com/v3/users/me/organizations?token={$attributes['apiKey']}");
