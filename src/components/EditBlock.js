@@ -267,14 +267,6 @@ export default function EditBlock( { attributes, setAttributes } ) {
 					) }
 				>
 					<PanelRow>
-						<label htmlFor="secondButtonBackgroundColor">
-							{ __(
-								'Signup button background color',
-								'blocks-for-eventbrite'
-							) }
-						</label>
-					</PanelRow>
-					<PanelRow>
 						<TextControl
 							label="Date Format"
 							value={ dateFormat }
