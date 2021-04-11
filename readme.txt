@@ -44,7 +44,7 @@ As long as you have an Eventbrite account you can get the api token key [here](h
 
 == Changelog ==
 
-= 1.0.8 =
+= 1.0.8: April 11, 2021 =
 * add: date and time formatting options
 
 = 1.0.7 =
