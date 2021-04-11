@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Event from './Event';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
@@ -5,7 +6,12 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind( styles );
 
 export default function EventList( { events, attributes } ) {
-	const { signUpButtonBackgroundColor, noEventsText } = attributes;
+	const {
+		signUpButtonBackgroundColor,
+		noEventsText,
+		dateFormat,
+		timeFormat,
+	} = attributes;
 
 	return (
 		<div className={ cx( 'flex', 'flex-wrap', 'justify-center' ) }>
@@ -19,13 +25,15 @@ export default function EventList( { events, attributes } ) {
 						url={ event.url }
 						summary={ event.summary }
 						cost={ event.ticket_classes?.[ 0 ]?.cost?.display }
-						startDate={ new Date( event.start.utc ) }
+						startDate={ event.start.local }
 						image={ event.logo?.original.url }
 						status={ event.status }
 						venue={ event.venue }
 						colors={ {
 							signUpButtonBackgroundColor,
 						} }
+						dateFormat={ dateFormat }
+						timeFormat={ timeFormat }
 					/>
 				) )
 			) : (
@@ -36,3 +44,12 @@ export default function EventList( { events, attributes } ) {
 		</div>
 	);
 }
+
+EventList.defaultProps = {
+	events: [],
+};
+
+EventList.PropTypes = {
+	events: PropTypes.array,
+	attributes: PropTypes.object.isRequired,
+};
