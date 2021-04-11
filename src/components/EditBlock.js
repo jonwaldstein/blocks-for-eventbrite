@@ -20,7 +20,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind( styles );
 
-const [ assets ] = getLocalizeData( 'assets' );
+const [ assets, siteSettings ] = getLocalizeData( 'assets', 'siteSettings' );
 
 export default function EditBlock( { attributes, setAttributes } ) {
 	const {
@@ -320,6 +320,8 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							summary={ 'Event description summary' }
 							cost={ '$25' }
 							startDate={ new Date() }
+							dateFormat={ siteSettings.dateFormat }
+							timeFormat={ siteSettings.timeFormat }
 							image={
 								assets?.placeholderImage
 									? assets?.placeholderImage
