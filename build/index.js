@@ -21516,6 +21516,14 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('blo
     },
     nameFilter: {
       type: 'string'
+    },
+    dateFormat: {
+      type: 'string',
+      default: 'F j, Y'
+    },
+    timeFormat: {
+      type: 'string',
+      default: 'g:i a'
     }
   },
 
@@ -21592,10 +21600,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var cx = classnames_bind__WEBPACK_IMPORTED_MODULE_10___default.a.bind(_style_module_css__WEBPACK_IMPORTED_MODULE_9___default.a);
 
-var _getLocalizeData = Object(_utilities__WEBPACK_IMPORTED_MODULE_7__["getLocalizeData"])('assets', 'siteSettings'),
-    _getLocalizeData2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_getLocalizeData, 2),
-    assets = _getLocalizeData2[0],
-    siteSettings = _getLocalizeData2[1];
+var _getLocalizeData = Object(_utilities__WEBPACK_IMPORTED_MODULE_7__["getLocalizeData"])('assets'),
+    _getLocalizeData2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_getLocalizeData, 1),
+    assets = _getLocalizeData2[0];
 
 function EditBlock(_ref) {
   var attributes = _ref.attributes,
@@ -21605,6 +21612,8 @@ function EditBlock(_ref) {
       status = attributes.status,
       orderBy = attributes.orderBy,
       noEventsText = attributes.noEventsText,
+      dateFormat = attributes.dateFormat,
+      timeFormat = attributes.timeFormat,
       nameFilter = attributes.nameFilter;
 
   var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(apiKey),
@@ -21755,6 +21764,38 @@ function EditBlock(_ref) {
       });
     },
     colors: defaultColors
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Eventbrite Date Settings', 'blocks-for-eventbrite')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("label", {
+    htmlFor: "secondButtonBackgroundColor"
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Signup button background color', 'blocks-for-eventbrite'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextControl"], {
+    label: "Date Format",
+    value: dateFormat,
+    help: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
+      href: "https://wordpress.org/support/article/formatting-date-and-time/",
+      target: "_blank",
+      rel: "noopener noreferrer",
+      className: cx('text-blue-500')
+    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Documentation on date and time formatting.', 'blocks-for-eventbrite')),
+    onChange: function onChange(newDateFormat) {
+      return setAttributes({
+        dateFormat: newDateFormat
+      });
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextControl"], {
+    label: "Time Format",
+    value: timeFormat,
+    help: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
+      href: "https://wordpress.org/support/article/formatting-date-and-time/",
+      target: "_blank",
+      rel: "noopener noreferrer",
+      className: cx('text-blue-500')
+    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Documentation on date and time formatting.', 'blocks-for-eventbrite')),
+    onChange: function onChange(newTimeFormat) {
+      return setAttributes({
+        timeFormat: newTimeFormat
+      });
+    }
   })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, !apiKey ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: cx('bg-red-900', 'text-center', 'py-4', 'lg:px-4', 'font-sans', 'rounded')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
@@ -21778,8 +21819,8 @@ function EditBlock(_ref) {
     summary: 'Event description summary',
     cost: '$25',
     startDate: new Date(),
-    dateFormat: siteSettings.dateFormat,
-    timeFormat: siteSettings.timeFormat,
+    dateFormat: dateFormat,
+    timeFormat: timeFormat,
     image: (assets === null || assets === void 0 ? void 0 : assets.placeholderImage) ? assets === null || assets === void 0 ? void 0 : assets.placeholderImage : 'https://placekitten.com/500/500',
     status: 'live',
     colors: {
@@ -21988,11 +22029,11 @@ __webpack_require__.r(__webpack_exports__);
 var cx = classnames_bind__WEBPACK_IMPORTED_MODULE_4___default.a.bind(_style_module_css__WEBPACK_IMPORTED_MODULE_3___default.a);
 function EventList(_ref) {
   var events = _ref.events,
-      attributes = _ref.attributes,
-      dateFormat = _ref.dateFormat,
-      timeFormat = _ref.timeFormat;
+      attributes = _ref.attributes;
   var signUpButtonBackgroundColor = attributes.signUpButtonBackgroundColor,
-      noEventsText = attributes.noEventsText;
+      noEventsText = attributes.noEventsText,
+      dateFormat = attributes.dateFormat,
+      timeFormat = attributes.timeFormat;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: cx('flex', 'flex-wrap', 'justify-center')
   }, (events === null || events === void 0 ? void 0 : events.length) > 0 ? events.map(function (event) {
@@ -22070,18 +22111,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _getLocalizeData = Object(_utilities__WEBPACK_IMPORTED_MODULE_4__["getLocalizeData"])('events', 'attributes', 'siteSettings'),
-    _getLocalizeData2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_getLocalizeData, 3),
+var _getLocalizeData = Object(_utilities__WEBPACK_IMPORTED_MODULE_4__["getLocalizeData"])('events', 'attributes'),
+    _getLocalizeData2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_getLocalizeData, 2),
     events = _getLocalizeData2[0],
-    attributes = _getLocalizeData2[1],
-    siteSettings = _getLocalizeData2[2];
+    attributes = _getLocalizeData2[1];
 
 function App() {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_EventList__WEBPACK_IMPORTED_MODULE_3__["default"], {
     events: events,
-    attributes: attributes,
-    dateFormat: siteSettings.dateFormat,
-    timeFormat: siteSettings.timeFormat
+    attributes: attributes
   });
 }
 

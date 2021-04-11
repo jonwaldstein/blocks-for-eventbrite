@@ -10,21 +10,10 @@ import 'tippy.js/themes/light-border.css';
 import 'tippy.js/animations/shift-away.css';
 import './base.css';
 
-const [ events, attributes, siteSettings ] = getLocalizeData(
-	'events',
-	'attributes',
-	'siteSettings'
-);
+const [ events, attributes ] = getLocalizeData( 'events', 'attributes' );
 
 function App() {
-	return (
-		<EventList
-			events={ events }
-			attributes={ attributes }
-			dateFormat={ siteSettings.dateFormat }
-			timeFormat={ siteSettings.timeFormat }
-		/>
-	);
+	return <EventList events={ events } attributes={ attributes } />;
 }
 
 domReady( function() {

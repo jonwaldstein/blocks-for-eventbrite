@@ -5,13 +5,13 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind( styles );
 
-export default function EventList( {
-	events,
-	attributes,
-	dateFormat,
-	timeFormat,
-} ) {
-	const { signUpButtonBackgroundColor, noEventsText } = attributes;
+export default function EventList( { events, attributes } ) {
+	const {
+		signUpButtonBackgroundColor,
+		noEventsText,
+		dateFormat,
+		timeFormat,
+	} = attributes;
 
 	return (
 		<div className={ cx( 'flex', 'flex-wrap', 'justify-center' ) }>

@@ -20,7 +20,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind( styles );
 
-const [ assets, siteSettings ] = getLocalizeData( 'assets', 'siteSettings' );
+const [ assets ] = getLocalizeData( 'assets' );
 
 export default function EditBlock( { attributes, setAttributes } ) {
 	const {
@@ -29,6 +29,8 @@ export default function EditBlock( { attributes, setAttributes } ) {
 		status,
 		orderBy,
 		noEventsText,
+		dateFormat,
+		timeFormat,
 		nameFilter,
 	} = attributes;
 
@@ -258,6 +260,69 @@ export default function EditBlock( { attributes, setAttributes } ) {
 						/>
 					</PanelRow>
 				</PanelBody>
+				<PanelBody
+					title={ __(
+						'Eventbrite Date Settings',
+						'blocks-for-eventbrite'
+					) }
+				>
+					<PanelRow>
+						<label htmlFor="secondButtonBackgroundColor">
+							{ __(
+								'Signup button background color',
+								'blocks-for-eventbrite'
+							) }
+						</label>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							label="Date Format"
+							value={ dateFormat }
+							help={
+								<a
+									href="https://wordpress.org/support/article/formatting-date-and-time/"
+									target="_blank"
+									rel="noopener noreferrer"
+									className={ cx( 'text-blue-500' ) }
+								>
+									{ __(
+										'Documentation on date and time formatting.',
+										'blocks-for-eventbrite'
+									) }
+								</a>
+							}
+							onChange={ ( newDateFormat ) =>
+								setAttributes( {
+									dateFormat: newDateFormat,
+								} )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							label="Time Format"
+							value={ timeFormat }
+							help={
+								<a
+									href="https://wordpress.org/support/article/formatting-date-and-time/"
+									target="_blank"
+									rel="noopener noreferrer"
+									className={ cx( 'text-blue-500' ) }
+								>
+									{ __(
+										'Documentation on date and time formatting.',
+										'blocks-for-eventbrite'
+									) }
+								</a>
+							}
+							onChange={ ( newTimeFormat ) =>
+								setAttributes( {
+									timeFormat: newTimeFormat,
+								} )
+							}
+						/>
+					</PanelRow>
+				</PanelBody>
 			</InspectorControls>
 
 			<Fragment>
@@ -320,8 +385,8 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							summary={ 'Event description summary' }
 							cost={ '$25' }
 							startDate={ new Date() }
-							dateFormat={ siteSettings.dateFormat }
-							timeFormat={ siteSettings.timeFormat }
+							dateFormat={ dateFormat }
+							timeFormat={ timeFormat }
 							image={
 								assets?.placeholderImage
 									? assets?.placeholderImage

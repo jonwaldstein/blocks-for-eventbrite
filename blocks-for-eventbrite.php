@@ -62,11 +62,6 @@ add_action('init', function () {
             'assets' => [
                 'placeholderImage' => plugins_url('src/img/placeholder.jpg', __FILE__),
             ],
-            'siteSettings' => [
-                'locale' => get_locale(),
-                'dateFormat' => get_option('date_format'),
-                'timeFormat' => get_option('time_format'),
-            ]
         ]
     );
 
@@ -85,7 +80,15 @@ add_action('init', function () {
             'noEventsText' => [
                 'type' => 'string',
                 'default' => 'There are no events at this time. Please check back for upcoming events.'
-            ]
+            ],
+            'dateFormat' => [
+                'type' => 'string',
+                'default' => get_option('date_format')
+            ],
+            'timeFormat' => [
+                'type' => 'string',
+                'default' => get_option('time_format')
+            ],
         ]
     ));
 });
@@ -192,11 +195,6 @@ function render_blocks_for_eventbrite_card($attributes)
         [
             'events' => $transient['events'],
             'attributes' => $transient['attributes'],
-            'siteSettings' => [
-                'locale' => get_locale(),
-                'dateFormat' => get_option('date_format'),
-                'timeFormat' => get_option('time_format'),
-            ]
         ]
     );
 
