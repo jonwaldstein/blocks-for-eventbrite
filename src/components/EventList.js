@@ -52,6 +52,4 @@ EventList.defaultProps = {
 EventList.PropTypes = {
 	events: PropTypes.array,
 	attributes: PropTypes.object.isRequired,
-	dateFormat: PropTypes.string.isRequired,
-	timeFormat: PropTypes.string.isRequired,
 };

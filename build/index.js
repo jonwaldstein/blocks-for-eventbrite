@@ -22066,9 +22066,7 @@ EventList.defaultProps = {
 };
 EventList.PropTypes = {
   events: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.array,
-  attributes: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired,
-  dateFormat: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
-  timeFormat: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
+  attributes: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired
 };
 
 /***/ }),
