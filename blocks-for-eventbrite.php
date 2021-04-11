@@ -128,9 +128,9 @@ function render_blocks_for_eventbrite_card($attributes)
     // if transient is empty or attributes have changed
     if (!$transient || $transient['attributes'] !== $attributes) {
 
-        $status = $attributes['status'] ? $attributes['status'] : 'live';
-        $orderBy = $attributes['orderBy'] ? $attributes['orderBy'] : 'start_asc';
-        $nameFilter = $attributes['nameFilter'] ? $attributes['nameFilter'] : null;
+        $status = !empty($attributes['status']) ? $attributes['status'] : 'live';
+        $orderBy = !empty($attributes['orderBy']) ? $attributes['orderBy'] : 'start_asc';
+        $nameFilter = !empty($attributes['nameFilter']) ? $attributes['nameFilter'] : null;
 
         // make GET request to eventbrite api to get the user's organization ID
         $userResponse = wp_remote_get("https://www.eventbriteapi.com/v3/users/me/organizations?token={$attributes['apiKey']}");
