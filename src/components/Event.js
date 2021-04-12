@@ -26,6 +26,8 @@ const baseButtonStyles = [
 ];
 
 const baseButtonLinkStyles = [
+	'bg-transparent',
+	'outline-none',
 	'text-blue-700',
 	'hover:text-black',
 	'focus:text-black',
@@ -84,11 +86,12 @@ export default function Event( {
 				className
 			) }
 		>
-			<div>
+			<div className={ cx( 'event__single--innerWrapper' ) }>
 				{ image ? (
 					<img
 						src={ image }
 						className={ cx(
+							'event__single--image',
 							'block',
 							'h-32',
 							'flex-none',
@@ -105,10 +108,11 @@ export default function Event( {
 				) : null }
 				<div
 					className={ cx(
+						'event__single--detailsWrapper',
 						'border-r',
 						'border-b',
 						'border-l',
-						'border-grey-light',
+						'border-gray-200',
 						'bg-white',
 						'rounded-b',
 						'py-4',
@@ -146,7 +150,7 @@ export default function Event( {
 									className={ cx(
 										'event__details--dateDay',
 										'text-xl',
-										'text-grey-800',
+										'text-gray-800',
 										'my-0',
 										'font-sans',
 										'whitespace-no-wrap'
@@ -205,7 +209,7 @@ export default function Event( {
 										className={ cx(
 											'event__details--date',
 											'font-sans',
-											'text-grey-dark',
+											'text-black',
 											'text-xs',
 											'font-medium',
 											'm-0'
@@ -227,7 +231,7 @@ export default function Event( {
 											<p
 												className={ cx(
 													'font-sans',
-													'text-grey-dark',
+													'text-black',
 													'text-xs',
 													'm-0',
 													'truncate'
@@ -241,7 +245,7 @@ export default function Event( {
 												<p
 													className={ cx(
 														'font-sans',
-														'text-grey-dark',
+														'text-black',
 														'text-xs',
 														'm-0',
 														'truncate'
@@ -257,7 +261,7 @@ export default function Event( {
 									<p
 										className={ cx(
 											'text-sm',
-											'text-grey-dark',
+											'text-black',
 											'flex',
 											'items-center',
 											'font-sans',
