@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.10]
+
+-   Fix CSS classnames (#21)
+-   Replaced "grey" with "gray" in classnames
+-   added active text states
+-   adjusted details link style to remove outline and make background transparent
+-   added more css classnames to elements for users to customize elements
+
 ## [1.0.9]
 
 -   Fix field labels and update readme
