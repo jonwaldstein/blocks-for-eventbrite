@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Blocks for Eventbrite
  * Description:     Gutenberg blocks that display eventbrite events
- * Version:         1.0.8
+ * Version:         1.0.9
  * Author:          Jon Waldstein
  * Author URI:      https://jonwaldstein.com
  * License:         GPL-2.0-or-later

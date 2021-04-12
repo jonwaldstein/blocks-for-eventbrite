@@ -4,7 +4,7 @@ Donate link:       https://www.paypal.com/paypalme/jonwaldstein
 Tags:              eventbrite, events, block
 Requires at least: 5.3.2
 Tested up to:      5.7
-Stable tag:        1.0.8
+Stable tag:        1.0.9
 Requires PHP:      7.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,6 +43,9 @@ As long as you have an Eventbrite account you can get the api token key [here](h
 1. Eventbrite Event Card
 
 == Changelog ==
+
+= 1.0.9: April 11, 2021 =
+* fix: field labels and update readme
 
 = 1.0.8: April 11, 2021 =
 * add: date and time formatting options
