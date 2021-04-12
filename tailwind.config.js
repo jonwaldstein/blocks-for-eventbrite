@@ -1,9 +1,6 @@
 module.exports = {
-    important: true,
-    purge: [
-    './src/**/*.js',
-    './src/**/*.jsx',
-  ],
+	important: true,
+	purge: [ './src/**/*.js', './src/**/*.jsx' ],
 	theme: {
 		extend: {
 			colors: {
@@ -15,5 +12,8 @@ module.exports = {
 				'90': '.9',
 			},
 		},
+	},
+	variants: {
+		textColor: [ 'responsive', 'hover', 'focus', 'active' ],
 	},
 };

@@ -14,7 +14,14 @@ export default function EventList( { events, attributes } ) {
 	} = attributes;
 
 	return (
-		<div className={ cx( 'flex', 'flex-wrap', 'justify-center' ) }>
+		<div
+			className={ cx(
+				'event__list',
+				'flex',
+				'flex-wrap',
+				'justify-center'
+			) }
+		>
 			{ events?.length > 0 ? (
 				events.map( ( event ) => (
 					<Event
@@ -37,7 +44,13 @@ export default function EventList( { events, attributes } ) {
 					/>
 				) )
 			) : (
-				<p className={ cx( 'text-base', 'text-orange-eventbrite' ) }>
+				<p
+					className={ cx(
+						'event__list--noEventsText',
+						'text-base',
+						'text-orange-eventbrite'
+					) }
+				>
 					{ noEventsText }
 				</p>
 			) }
