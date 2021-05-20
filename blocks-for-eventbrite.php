@@ -94,6 +94,10 @@ add_action('init', function () {
                 'type' => 'string',
                 'default' => 'Sign Up'
             ],
+            'pageSize' => [
+                'type' => 'number',
+                'default' => 50
+            ],
         ]
     ));
 });

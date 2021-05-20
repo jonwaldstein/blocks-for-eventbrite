@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0]
 - Add button text field (#25)
+- Add pageSize attribute / event number limit field (#26)
 
 ## [1.0.10]
 

@@ -2,6 +2,7 @@ import { Fragment, useState } from '@wordpress/element';
 import {
 	SelectControl,
 	TextControl,
+	__experimentalNumberControl as NumberControl,
 	PanelBody,
 	PanelRow,
 	ColorPalette,
@@ -33,6 +34,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 		dateFormat,
 		timeFormat,
 		nameFilter,
+		pageSize,
 	} = attributes;
 
 	const [ apiKeyState, setApiKeyState ] = useState( apiKey );
@@ -229,6 +231,24 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							onChange={ ( newNameFilter ) =>
 								setAttributes( {
 									nameFilter: newNameFilter,
+								} )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<NumberControl
+							label={ __(
+								'Event number limit',
+								'blocks-for-eventbrite'
+							) }
+							help={ __(
+								'This will only display the number of events you have defined.',
+								'blocks-for-eventbrite'
+							) }
+							value={ pageSize }
+							onChange={ ( newPageSize ) =>
+								setAttributes( {
+									pageSize: newPageSize,
 								} )
 							}
 						/>
