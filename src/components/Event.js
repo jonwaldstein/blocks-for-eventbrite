@@ -56,6 +56,7 @@ export default function Event( {
 	status,
 	colors,
 	venue,
+	signUpButtonText,
 	className,
 } ) {
 	const [ source, target ] = useSingleton();
@@ -323,7 +324,7 @@ export default function Event( {
 											} }
 										>
 											{ __(
-												'Sign up',
+												signUpButtonText,
 												'blocks-for-eventbrite'
 											) }
 										</button>
@@ -364,5 +365,6 @@ Event.PropTypes = {
 	status: PropTypes.string.isRequired,
 	colors: PropTypes.string.isRequired,
 	venue: PropTypes.string,
+	signUpButtonText: PropTypes.string,
 	className: PropTypes.string,
 };

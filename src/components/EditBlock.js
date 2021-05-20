@@ -2,6 +2,7 @@ import { Fragment, useState } from '@wordpress/element';
 import {
 	SelectControl,
 	TextControl,
+	__experimentalNumberControl as NumberControl,
 	PanelBody,
 	PanelRow,
 	ColorPalette,
@@ -25,6 +26,7 @@ const [ assets ] = getLocalizeData( 'assets' );
 export default function EditBlock( { attributes, setAttributes } ) {
 	const {
 		signUpButtonBackgroundColor,
+		signUpButtonText,
 		apiKey,
 		status,
 		orderBy,
@@ -32,6 +34,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 		dateFormat,
 		timeFormat,
 		nameFilter,
+		pageSize,
 	} = attributes;
 
 	const [ apiKeyState, setApiKeyState ] = useState( apiKey );
@@ -232,10 +235,28 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							}
 						/>
 					</PanelRow>
+					<PanelRow>
+						<NumberControl
+							label={ __(
+								'Event number limit',
+								'blocks-for-eventbrite'
+							) }
+							help={ __(
+								'This will only display the number of events you have defined.',
+								'blocks-for-eventbrite'
+							) }
+							value={ pageSize }
+							onChange={ ( newPageSize ) =>
+								setAttributes( {
+									pageSize: newPageSize,
+								} )
+							}
+						/>
+					</PanelRow>
 				</PanelBody>
 				<PanelBody
 					title={ __(
-						'Eventbrite Design Settings',
+						'Eventbrite Button Settings',
 						'blocks-for-eventbrite'
 					) }
 				>
@@ -257,6 +278,17 @@ export default function EditBlock( { attributes, setAttributes } ) {
 								} )
 							}
 							colors={ defaultColors }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							label="Signup Button Text"
+							value={ signUpButtonText }
+							onChange={ ( newSignUpButtonText ) =>
+								setAttributes( {
+									signUpButtonText: newSignUpButtonText,
+								} )
+							}
 						/>
 					</PanelRow>
 				</PanelBody>
@@ -388,6 +420,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							colors={ {
 								signUpButtonBackgroundColor,
 							} }
+							signUpButtonText={ signUpButtonText }
 							venue={ {
 								name: __(
 									'Venue name',

@@ -44,6 +44,10 @@ As long as you have an Eventbrite account you can get the api token key [here](h
 
 == Changelog ==
 
+= 1.1.0: May 20, 2021 =
+* add: button text field to customize button text
+* add: event number limit field to limit the number of events displayed
+
 = 1.0.10: April 12, 2021 =
 * fix: Replaced "grey" with "gray" in classnames
 * fix: added active text states

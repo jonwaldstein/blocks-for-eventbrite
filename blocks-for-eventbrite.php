@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Blocks for Eventbrite
  * Description:     Gutenberg blocks that display eventbrite events
- * Version:         1.0.10
+ * Version:         1.1.0
  * Author:          Jon Waldstein
  * Author URI:      https://jonwaldstein.com
  * License:         GPL-2.0-or-later
@@ -17,11 +17,13 @@ if (!defined('ABSPATH')) {
 }
 
 // Setup constants
-define('BLOCKS_FOR_EVENTBRITE_SCRIPT_ASSET_PATH', dirname(__FILE__) . '/build/index.asset.php');
-define('BLOCKS_FOR_EVENTBRITE_SCRIPT_ASSET', require(BLOCKS_FOR_EVENTBRITE_SCRIPT_ASSET_PATH));
-define('BLOCKS_FOR_EVENTBRITE_INDEX_JS', 'build/index.js');
-define('BLOCKS_FOR_EVENTBRITE_LOCALIZED_SCRIPT_NAME', 'blocksForEventbrite');
-define('BLOCKS_FOR_EVENTBRITE_SCRIPT_NAME', 'blocks-for-eventbrite-script');
+const BLOCKS_FOR_EVENTBRITE_SCRIPT_ASSET_PATH = __DIR__ . '/build/index.asset.php';
+define("BLOCKS_FOR_EVENTBRITE_SCRIPT_ASSET", require(BLOCKS_FOR_EVENTBRITE_SCRIPT_ASSET_PATH));
+const BLOCKS_FOR_EVENTBRITE_INDEX_JS = 'build/index.js';
+const BLOCKS_FOR_EVENTBRITE_LOCALIZED_SCRIPT_NAME = 'blocksForEventbrite';
+const BLOCKS_FOR_EVENTBRITE_SCRIPT_NAME = 'blocks-for-eventbrite-script';
+// include class with no auto-loading
+include_once('src/api/RenderBlocksForEventbriteCard.php');
 
 /**
  * Registers all block assets so that they can be enqueued through the block editor
@@ -88,6 +90,14 @@ add_action('init', function () {
                 'type' => 'string',
                 'default' => get_option('time_format')
             ],
+            'signUpButtonText' => [
+                'type' => 'string',
+                'default' => 'Sign Up'
+            ],
+            'pageSize' => [
+                'type' => 'number',
+                'default' => 50
+            ],
         ]
     ));
 });
@@ -116,91 +126,13 @@ add_filter('block_categories', function ($categories) {
 });
 
 /**
- * Render callback for eventbrite blocks event card
+ * Register block type callback render_callback
  *
- * @param object $attributes
- *
+ * @param $attributes
+ * @return false|string|void
  */
 function render_blocks_for_eventbrite_card($attributes)
 {
-    // do not render in the backend
-    if (is_admin()) return;
-
-    // set transient key based on the individual blocks
-    $TRANSIENT_KEY = "blocks_for_eventbrite_{$attributes['id']}";
-
-    // get transient based on current transient key
-    $transient = get_transient($TRANSIENT_KEY);
-
-    // if transient is empty or attributes have changed
-    if (!$transient || $transient['attributes'] !== $attributes) {
-
-        $status = !empty($attributes['status']) ? $attributes['status'] : 'live';
-        $orderBy = !empty($attributes['orderBy']) ? $attributes['orderBy'] : 'start_asc';
-        $nameFilter = !empty($attributes['nameFilter']) ? $attributes['nameFilter'] : null;
-
-        // make GET request to eventbrite api to get the user's organization ID
-        $userResponse = wp_remote_get("https://www.eventbriteapi.com/v3/users/me/organizations?token={$attributes['apiKey']}");
-
-        // decode fetched data to json
-        $userData = json_decode(wp_remote_retrieve_body($userResponse), true);
-
-        // get the organization id
-        $userOrganization = $userData['organizations'][0]['id'];
-
-        // build api call url
-        $organizationEventsUrl = urldecode("https://www.eventbriteapi.com/v3/organizations/{$userOrganization}/events/?" . http_build_query(
-            [
-                'token' => $attributes['apiKey'],
-                'expand' => 'ticket_classes,venue',
-                'status' => $status,
-                'order_by' => $orderBy,
-                'time_filter' => 'current_future',
-                'name_filter' => $nameFilter
-            ],
-            '',
-            '&'
-        ));
-
-        // make GET request to eventbrite api based on user's attribute settings
-        $response = wp_remote_get($organizationEventsUrl);
-
-        // decode fetched data to json
-        $data = json_decode(wp_remote_retrieve_body($response), true);
-
-        // set transient data with current transient key for 1 minute
-        set_transient($TRANSIENT_KEY, [
-            'events' => $data['events'],
-            'attributes' => $attributes,
-            'date' => date('Y-m-d'),
-        ], 60);
-
-        // get transient based on current block
-        $transient = get_transient($TRANSIENT_KEY);
-    }
-
-    // remove apiKey from attributes so it's not accessible on the front-end
-    if (!empty($transient['attributes']['apiKey'])) {
-        unset($transient['attributes']['apiKey']);
-    }
-
-    // enqueue our script for the front-end
-    wp_enqueue_script(BLOCKS_FOR_EVENTBRITE_SCRIPT_NAME);
-
-    // access our transient data in js
-    wp_localize_script(
-        BLOCKS_FOR_EVENTBRITE_SCRIPT_NAME,
-        BLOCKS_FOR_EVENTBRITE_LOCALIZED_SCRIPT_NAME,
-        [
-            'events' => $transient['events'],
-            'attributes' => $transient['attributes'],
-        ]
-    );
-
-    ob_start();
-
-    // use js to render events in this div
-    echo '<div id="root-blocks-for-eventbrite" class="blocks-for-eventbrite blocks-for-eventbrite-css-wrapper"></div>';
-
-    return ob_get_clean();
+    $blocks = new RenderBlocksForEventbriteCard($attributes);
+    return $blocks->render();
 }
