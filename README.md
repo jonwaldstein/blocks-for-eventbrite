@@ -9,8 +9,9 @@ Managing events on WordPress can be a challenge. These days we have many great s
 - Utilizes Eventbrite's _embedded checkout_ experience meaning if your website is secure with an SSL, the sign up button will let users pay and/or signup without leaving your website.
 - Provides an event _status_ selector to choose between live, draft, and all events.
 - Provides an _order by_ selector to choose the order you would like your events to be displayed in.
-- Provides ability to change the _sign up_ button color
+- Provides ability to change the _sign up_ button color & text
 - Provides an _event name filter_ to filter by event title keywords
+- Provides an _event number limit_ field to only display a specific number of events
 - Gives users ability to view event description summary by clicking _details_
 - Gives users ability to click on title and navigate to appropriate Eventbrite url
 - Saves events in WordPress cache (transients) every 1 minute upon page request.
