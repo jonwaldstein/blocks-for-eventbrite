@@ -5,6 +5,7 @@
  */
 import { registerBlockType } from '@wordpress/blocks';
 import EditBlock from '../../components/EditBlock';
+import attributes from './attributes';
 
 /**
  * Retrieves the translation of text.
@@ -66,47 +67,10 @@ registerBlockType( 'blocks-for-eventbrite/events-card', {
 		reusable: false,
 	},
 
-	attributes: {
-		id: {
-			type: 'number',
-		},
-		apiKey: {
-			type: 'string',
-		},
-		status: {
-			type: 'string',
-			default: 'live',
-		},
-		orderBy: {
-			type: 'string',
-			default: 'start_asc',
-		},
-		signUpButtonBackgroundColor: {
-			type: 'string',
-		},
-		signUpButtonText: {
-			type: 'string',
-			default: __( 'Sign Up', 'blocks-for-eventbrite' ),
-		},
-		noEventsText: {
-			type: 'string',
-			default: __(
-				'There are no events at this time. Please check back for upcoming events.',
-				'blocks-for-eventbrite'
-			),
-		},
-		nameFilter: {
-			type: 'string',
-		},
-		dateFormat: {
-			type: 'string',
-			default: 'F j, Y',
-		},
-		timeFormat: {
-			type: 'string',
-			default: 'g:i a',
-		},
-	},
+	/**
+	 * block attributes
+	 */
+	attributes,
 
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -118,9 +82,7 @@ registerBlockType( 'blocks-for-eventbrite/events-card', {
 	 *
 	 * @return {WPElement} Element to render.
 	 */
-	edit( props ) {
-		return <EditBlock { ...props } />;
-	},
+	edit: EditBlock,
 
 	/**
 	 * The save function defines the way in which the different attributes should be combined

@@ -85,7 +85,8 @@ class RenderBlocksForEventbriteCard
                 'status' => $status,
                 'order_by' => $orderBy,
                 'time_filter' => 'current_future',
-                'name_filter' => $nameFilter
+                'name_filter' => $nameFilter,
+                'page_size' => $this->attributes['pageSize']
             ],
             '',
             '&'
