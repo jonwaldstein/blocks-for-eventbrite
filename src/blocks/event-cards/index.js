@@ -84,6 +84,10 @@ registerBlockType( 'blocks-for-eventbrite/events-card', {
 		signUpButtonBackgroundColor: {
 			type: 'string',
 		},
+		signUpButtonText: {
+			type: 'string',
+			default: __( 'Sign Up', 'blocks-for-eventbrite' ),
+		},
 		noEventsText: {
 			type: 'string',
 			default: __(

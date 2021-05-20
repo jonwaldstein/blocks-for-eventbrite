@@ -8,6 +8,7 @@ const cx = classNames.bind( styles );
 export default function EventList( { events, attributes } ) {
 	const {
 		signUpButtonBackgroundColor,
+		signUpButtonText,
 		noEventsText,
 		dateFormat,
 		timeFormat,
@@ -39,6 +40,7 @@ export default function EventList( { events, attributes } ) {
 						colors={ {
 							signUpButtonBackgroundColor,
 						} }
+						signUpButtonText={ signUpButtonText }
 						dateFormat={ dateFormat }
 						timeFormat={ timeFormat }
 					/>

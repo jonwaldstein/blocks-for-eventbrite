@@ -25,6 +25,7 @@ const [ assets ] = getLocalizeData( 'assets' );
 export default function EditBlock( { attributes, setAttributes } ) {
 	const {
 		signUpButtonBackgroundColor,
+		signUpButtonText,
 		apiKey,
 		status,
 		orderBy,
@@ -235,7 +236,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 				</PanelBody>
 				<PanelBody
 					title={ __(
-						'Eventbrite Design Settings',
+						'Eventbrite Button Settings',
 						'blocks-for-eventbrite'
 					) }
 				>
@@ -257,6 +258,17 @@ export default function EditBlock( { attributes, setAttributes } ) {
 								} )
 							}
 							colors={ defaultColors }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							label="Signup Button Text"
+							value={ signUpButtonText }
+							onChange={ ( newSignUpButtonText ) =>
+								setAttributes( {
+									signUpButtonText: newSignUpButtonText,
+								} )
+							}
 						/>
 					</PanelRow>
 				</PanelBody>
@@ -388,6 +400,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							colors={ {
 								signUpButtonBackgroundColor,
 							} }
+							signUpButtonText={ signUpButtonText }
 							venue={ {
 								name: __(
 									'Venue name',
