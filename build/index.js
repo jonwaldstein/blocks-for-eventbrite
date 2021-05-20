@@ -21935,6 +21935,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('blo
     signUpButtonBackgroundColor: {
       type: 'string'
     },
+    signUpButtonText: {
+      type: 'string',
+      default: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Sign Up', 'blocks-for-eventbrite')
+    },
     noEventsText: {
       type: 'string',
       default: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('There are no events at this time. Please check back for upcoming events.', 'blocks-for-eventbrite')
@@ -22033,6 +22037,7 @@ function EditBlock(_ref) {
   var attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
   var signUpButtonBackgroundColor = attributes.signUpButtonBackgroundColor,
+      signUpButtonText = attributes.signUpButtonText,
       apiKey = attributes.apiKey,
       status = attributes.status,
       orderBy = attributes.orderBy,
@@ -22177,7 +22182,7 @@ function EditBlock(_ref) {
       });
     }
   }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Eventbrite Design Settings', 'blocks-for-eventbrite')
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Eventbrite Button Settings', 'blocks-for-eventbrite')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("label", {
     htmlFor: "secondButtonBackgroundColor"
   }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Signup button background color', 'blocks-for-eventbrite'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ColorPalette"], {
@@ -22189,6 +22194,14 @@ function EditBlock(_ref) {
       });
     },
     colors: defaultColors
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextControl"], {
+    label: "Signup Button Text",
+    value: signUpButtonText,
+    onChange: function onChange(newSignUpButtonText) {
+      return setAttributes({
+        signUpButtonText: newSignUpButtonText
+      });
+    }
   }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Eventbrite Date Settings', 'blocks-for-eventbrite')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextControl"], {
@@ -22249,6 +22262,7 @@ function EditBlock(_ref) {
     colors: {
       signUpButtonBackgroundColor: signUpButtonBackgroundColor
     },
+    signUpButtonText: signUpButtonText,
     venue: {
       name: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Venue name', 'blocks-for-eventbrite'),
       address: {
@@ -22316,6 +22330,7 @@ function Event(_ref) {
       status = _ref.status,
       colors = _ref.colors,
       venue = _ref.venue,
+      signUpButtonText = _ref.signUpButtonText,
       className = _ref.className;
 
   var _useSingleton = Object(_tippyjs_react__WEBPACK_IMPORTED_MODULE_4__["useSingleton"])(),
@@ -22396,7 +22411,7 @@ function Event(_ref) {
     style: {
       backgroundColor: signUpButtonBackgroundColor
     }
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])('Sign up', 'blocks-for-eventbrite')) : null)))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_tippyjs_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__["__"])(signUpButtonText, 'blocks-for-eventbrite')) : null)))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_tippyjs_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
     singleton: source,
     trigger: "click",
     theme: "light",
@@ -22422,6 +22437,7 @@ Event.PropTypes = {
   status: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
   colors: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
   venue: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
+  signUpButtonText: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
   className: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
 };
 
@@ -22456,6 +22472,7 @@ function EventList(_ref) {
   var events = _ref.events,
       attributes = _ref.attributes;
   var signUpButtonBackgroundColor = attributes.signUpButtonBackgroundColor,
+      signUpButtonText = attributes.signUpButtonText,
       noEventsText = attributes.noEventsText,
       dateFormat = attributes.dateFormat,
       timeFormat = attributes.timeFormat;
@@ -22479,6 +22496,7 @@ function EventList(_ref) {
       colors: {
         signUpButtonBackgroundColor: signUpButtonBackgroundColor
       },
+      signUpButtonText: signUpButtonText,
       dateFormat: dateFormat,
       timeFormat: timeFormat
     });

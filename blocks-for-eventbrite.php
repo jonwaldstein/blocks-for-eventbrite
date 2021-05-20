@@ -90,6 +90,10 @@ add_action('init', function () {
                 'type' => 'string',
                 'default' => get_option('time_format')
             ],
+            'signUpButtonText' => [
+                'type' => 'string',
+                'default' => 'Sign Up'
+            ],
         ]
     ));
 });
