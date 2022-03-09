@@ -1,6 +1,6 @@
 {
 	"name": "blocks-for-eventbrite",
-	"version": "1.0.1",
+	"version": "1.1.2",
 	"description": "WordPress Gutenberg blocks that display eventbrite events",
 	"author": "Jon Waldstein",
 	"license": "GPL-2.0-or-later",
