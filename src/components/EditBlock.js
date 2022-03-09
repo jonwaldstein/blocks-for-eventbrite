@@ -248,7 +248,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							value={ pageSize }
 							onChange={ ( newPageSize ) =>
 								setAttributes( {
-									pageSize: newPageSize,
+									pageSize: Number( newPageSize ),
 								} )
 							}
 						/>
