@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { React } from '@wordpress/element';
 import { useEffect } from '@wordpress/element';
 import { format } from '@wordpress/date';
 import Tippy, { useSingleton } from '@tippyjs/react';
@@ -71,23 +72,24 @@ export default function Event( {
 			modalTriggerElementId: `eventbrite-widget-modal-trigger-${ id }`,
 		} );
 	}, [ id ] );
-
 	const { signUpButtonBackgroundColor } = colors;
 
 	return (
 		<article
 			className={ cx(
 				'event__single',
-				'max-w-xs',
-				'w-full',
 				'px-2',
 				'mb-4',
-				'h-full',
 				'font-sans',
-				className
+				'flex',
+				className,
 			) }
 		>
-			<div className={ cx( 'event__single--innerWrapper' ) }>
+			<div className={ cx( 'event__single--innerWrapper',
+				'flex',
+				'flex-col',
+				'flex-grow-0',
+				'w-64' )}>
 				{ image ? (
 					<img
 						src={ image }
@@ -95,7 +97,6 @@ export default function Event( {
 							'event__single--image',
 							'block',
 							'h-32',
-							'flex-none',
 							'object-cover',
 							'object-center',
 							'rounded-t',
@@ -352,7 +353,7 @@ Event.defaultProps = {
 	className: null,
 };
 
-Event.PropTypes = {
+Event.propTypes = {
 	id: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	url: PropTypes.string.isRequired,
@@ -363,8 +364,8 @@ Event.PropTypes = {
 	timeFormat: PropTypes.string.isRequired,
 	image: PropTypes.string,
 	status: PropTypes.string.isRequired,
-	colors: PropTypes.string.isRequired,
-	venue: PropTypes.string,
+	colors: PropTypes.object.isRequired,
+	venue: PropTypes.object,
 	signUpButtonText: PropTypes.string,
 	className: PropTypes.string,
 };

@@ -44,4 +44,8 @@ export default {
 		type: 'number',
 		default: 50,
 	},
+	itemJustification: {
+		type: 'string',
+		default: 'center',
+	},
 };

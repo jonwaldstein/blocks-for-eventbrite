@@ -1,4 +1,4 @@
-import { Fragment, useState } from '@wordpress/element';
+import { React, Fragment, useState } from '@wordpress/element';
 import {
 	SelectControl,
 	TextControl,
@@ -9,8 +9,10 @@ import {
 	Button,
 	Spinner,
 	Dashicon,
+	Icon,
+	close,
 } from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
+import { InspectorControls, BlockControls, JustifyContentControl } from '@wordpress/block-editor';
 import { dispatch, select } from '@wordpress/data';
 import axios from 'axios';
 import { __ } from '@wordpress/i18n';
@@ -18,6 +20,7 @@ import { getLocalizeData } from '../utilities';
 import Event from '../components/Event';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
+import EventList from "./EventList";
 
 const cx = classNames.bind( styles );
 
@@ -35,6 +38,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 		timeFormat,
 		nameFilter,
 		pageSize,
+		itemJustification,
 	} = attributes;
 
 	const [ apiKeyState, setApiKeyState ] = useState( apiKey );
@@ -43,6 +47,81 @@ export default function EditBlock( { attributes, setAttributes } ) {
 	const [ organizationName, setOrganizationName ] = useState( false );
 
 	const defaultColors = [ { name: 'orange', color: '#d6472b' } ];
+
+	const mockEvents = [
+		{
+			id: '1',
+			name: {
+				text: 'Test Event 1'
+			},
+			url: 'http://example.com',
+			description: {
+				text: 'Test description'
+			},
+			summary: 'Test summary',
+			ticket_classes: [
+				{
+					cost: {
+						display: '$25',
+					}
+				}
+			],
+			start: {
+				local: new Date(2022,3, 26).toString(),
+			},
+			logo: {
+				original: {
+					url: assets?.placeholderImage
+						? assets?.placeholderImage
+						: 'https://placekitten.com/500/500'
+				}
+			},
+			status: 'live',
+			venue: {
+				name: 'Test Venue',
+				address: {
+					city: 'Providence',
+					region: 'RI',
+				}
+			},
+		},
+		{
+			id: '2',
+			name: {
+				text: 'Test Event 2'
+			},
+			url: 'http://example.com',
+			description: {
+				text: 'Test 2 description'
+			},
+			summary: 'Test summary',
+			ticket_classes: [
+				{
+					cost: {
+						display: '$65',
+					}
+				}
+			],
+			start: {
+				local: new Date(2022,9, 14).toString(),
+			},
+			logo: {
+				original: {
+					url: assets?.placeholderImage
+						? assets?.placeholderImage
+						: 'https://placekitten.com/500/500'
+				}
+			},
+			status: 'live',
+			venue: {
+				name: 'Test Venue',
+				address: {
+					city: 'Providence',
+					region: 'RI',
+				}
+			},
+		},
+	]
 
 	const testApiKey = () => {
 		setApiKeyLoading( true );
@@ -76,7 +155,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 							label="Api Token Key"
 							value={ apiKeyState }
 							help={
-								<p>
+								<>
 									{ __(
 										'Get api token',
 										'blocks-for-eventbrite'
@@ -92,7 +171,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 											'blocks-for-eventbrite'
 										) }
 									</a>
-								</p>
+								</>
 							}
 							onChange={ ( newApiKey ) => {
 								setApiKeyState( newApiKey );
@@ -100,21 +179,17 @@ export default function EditBlock( { attributes, setAttributes } ) {
 						/>
 					</PanelRow>
 					{ apiKeyError && (
-						<PanelRow>
-							<p className={ cx( 'text-red-700' ) }>
-								{ apiKeyError }
-							</p>
+						<PanelRow className={ cx( 'text-red-700' ) }>
+							{ apiKeyError }
 						</PanelRow>
 					) }
 					{ organizationName && (
-						<PanelRow>
-							<p className={ cx( 'text-green-700' ) }>
-								{ __(
-									'Organization name',
-									'blocks-for-eventbrite'
-								) }
-								: { organizationName }
-							</p>
+						<PanelRow className={ cx( 'text-green-700' ) }>
+							{ __(
+								'Organization name',
+								'blocks-for-eventbrite'
+							) }
+							: { organizationName }
 						</PanelRow>
 					) }
 					<PanelRow>
@@ -254,6 +329,61 @@ export default function EditBlock( { attributes, setAttributes } ) {
 						/>
 					</PanelRow>
 				</PanelBody>
+				<PanelBody title="Eventbrite Event Layout">
+					<PanelRow>
+						<SelectControl
+							label="Position"
+							value={ itemJustification }
+							options={ [
+								{
+									label: __(
+										'Left',
+										'blocks-for-eventbrite'
+									),
+									value: 'left',
+								},
+								{
+									label: __(
+										'Right',
+										'blocks-for-eventbrite'
+									),
+									value: 'right',
+								},,
+								{
+									label: __(
+										'Center',
+										'blocks-for-eventbrite'
+									),
+									value: 'center',
+								},,
+								{
+									label: __(
+										'Space Between',
+										'blocks-for-eventbrite'
+									),
+									value: 'space-between',
+								},
+							] }
+							onChange={ ( next ) => {
+								let justification;
+								switch(next) {
+									case 'left':
+										justification = 'start';
+										break;
+									case 'right':
+										justification = 'end';
+										break;
+									case 'space-between':
+										justification = 'between';
+										break;
+									default:
+										justification = next;
+								}
+								setAttributes( { itemJustification: justification } );
+							} }
+						/>
+					</PanelRow>
+				</PanelBody>
 				<PanelBody
 					title={ __(
 						'Eventbrite Button Settings',
@@ -348,7 +478,28 @@ export default function EditBlock( { attributes, setAttributes } ) {
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
-
+			<BlockControls>
+				<JustifyContentControl
+					value={ itemJustification }
+					onChange={ ( next ) => {
+						let justification;
+						switch(next) {
+							case 'left':
+								justification = 'start';
+								break;
+							case 'right':
+								justification = 'end';
+								break;
+							case 'space-between':
+								justification = 'between';
+								break;
+							default:
+								justification = next;
+						}
+						setAttributes( { itemJustification: justification } );
+					} }
+				/>
+			</BlockControls>
 			<Fragment>
 				{ ! apiKey ? (
 					<div
@@ -364,7 +515,6 @@ export default function EditBlock( { attributes, setAttributes } ) {
 						<div
 							className={ cx(
 								'p-2',
-								'items-center',
 								'text-indigo-100',
 								'bg-red-800',
 								'lg:rounded-full',
@@ -392,46 +542,8 @@ export default function EditBlock( { attributes, setAttributes } ) {
 						</div>
 					</div>
 				) : (
-					<div className="blocks-for-eventbrite-css-wrapper">
-						<p className={ cx( 'font-sans', 'text-center' ) }>
-							{ __(
-								'This is a static preview of how your event card will look.  Each event pulled from your Eventbrite account will be displayed in this format on the frontend of your website.',
-								'blocks-for-eventbrite'
-							) }
-						</p>
-						<Event
-							className={ cx( 'mx-auto' ) }
-							title={ __(
-								'Event Title',
-								'blocks-for-eventbrite'
-							) }
-							description={ 'Event description' }
-							summary={ 'Event description summary' }
-							cost={ '$25' }
-							startDate={ new Date() }
-							dateFormat={ dateFormat }
-							timeFormat={ timeFormat }
-							image={
-								assets?.placeholderImage
-									? assets?.placeholderImage
-									: 'https://placekitten.com/500/500'
-							}
-							status={ 'live' }
-							colors={ {
-								signUpButtonBackgroundColor,
-							} }
-							signUpButtonText={ signUpButtonText }
-							venue={ {
-								name: __(
-									'Venue name',
-									'blocks-for-eventbrite'
-								),
-								address: {
-									city: 'Providence',
-									region: 'RI',
-								},
-							} }
-						/>
+					<div className={cx('flex', 'flex-row', 'blocks-for-eventbrite-css-wrapper', 'items-center' )}>
+						<EventList events={ mockEvents } attributes={ attributes } />
 					</div>
 				) }
 			</Fragment>
