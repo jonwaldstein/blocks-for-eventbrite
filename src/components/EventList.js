@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { React } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import Event from './Event';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
@@ -7,6 +9,7 @@ const cx = classNames.bind( styles );
 
 export default function EventList( { events, attributes } ) {
 	const {
+		itemJustification,
 		signUpButtonBackgroundColor,
 		signUpButtonText,
 		noEventsText,
@@ -14,13 +17,22 @@ export default function EventList( { events, attributes } ) {
 		timeFormat,
 	} = attributes;
 
+	const [ cardJustificationClass, setCardJustificationClass ] = useState( `justify-center` );
+
+	useEffect( () => {
+		if (!itemJustification) return;
+		setCardJustificationClass('justify-' + itemJustification);
+	}, [ itemJustification ] );
+
+
 	return (
-		<div
+		<div id='blocks-for-eventbrite-list'
 			className={ cx(
 				'event__list',
-				'flex',
+				'flex-auto',
 				'flex-wrap',
-				'justify-center'
+				'flex',
+				cardJustificationClass
 			) }
 		>
 			{ events?.length > 0 ? (
@@ -64,7 +76,7 @@ EventList.defaultProps = {
 	events: [],
 };
 
-EventList.PropTypes = {
+EventList.propTypes = {
 	events: PropTypes.array,
 	attributes: PropTypes.object.isRequired,
 };
