@@ -123,6 +123,24 @@ export default function EditBlock( { attributes, setAttributes } ) {
 		},
 	]
 
+	const setJustificationAttribute = (value) => {
+		let justification;
+		switch(value) {
+			case 'left':
+				justification = 'start';
+				break;
+			case 'right':
+				justification = 'end';
+				break;
+			case 'space-between':
+				justification = 'between';
+				break;
+			default:
+				justification = value;
+		}
+		setAttributes( { itemJustification: justification } );
+	}
+
 	const testApiKey = () => {
 		setApiKeyLoading( true );
 		axios
@@ -365,21 +383,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 								},
 							] }
 							onChange={ ( next ) => {
-								let justification;
-								switch(next) {
-									case 'left':
-										justification = 'start';
-										break;
-									case 'right':
-										justification = 'end';
-										break;
-									case 'space-between':
-										justification = 'between';
-										break;
-									default:
-										justification = next;
-								}
-								setAttributes( { itemJustification: justification } );
+								setJustificationAttribute(next);
 							} }
 						/>
 					</PanelRow>
@@ -482,21 +486,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 				<JustifyContentControl
 					value={ itemJustification }
 					onChange={ ( next ) => {
-						let justification;
-						switch(next) {
-							case 'left':
-								justification = 'start';
-								break;
-							case 'right':
-								justification = 'end';
-								break;
-							case 'space-between':
-								justification = 'between';
-								break;
-							default:
-								justification = next;
-						}
-						setAttributes( { itemJustification: justification } );
+						setJustificationAttribute(next);
 					} }
 				/>
 			</BlockControls>
