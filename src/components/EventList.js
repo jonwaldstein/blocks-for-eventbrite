@@ -1,11 +1,10 @@
-import PropTypes from 'prop-types';
 import Event from './Event';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind( styles );
 
-export default function EventList( { events, attributes } ) {
+export default function EventList( { events = [], attributes } ) {
 	const {
 		signUpButtonBackgroundColor,
 		signUpButtonText,
@@ -59,12 +58,3 @@ export default function EventList( { events, attributes } ) {
 		</div>
 	);
 }
-
-EventList.defaultProps = {
-	events: [],
-};
-
-EventList.PropTypes = {
-	events: PropTypes.array,
-	attributes: PropTypes.object.isRequired,
-};

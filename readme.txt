@@ -2,9 +2,9 @@
 Contributors:      jonwaldstein
 Donate link:       https://www.paypal.com/paypalme/jonwaldstein
 Tags:              eventbrite, events, block
-Requires at least: 5.3.2
-Tested up to:      5.9.1
-Stable tag:        1.1.2
+Requires at least: 5.3
+Tested up to:      6.6
+Stable tag:        1.1.3
 Requires PHP:      7.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,6 +43,9 @@ As long as you have an Eventbrite account you can get the api token key [here](h
 1. Eventbrite Event Card
 
 == Changelog ==
+
+= 1.1.3: August 20, 2024 =
+* update: housekeeping updates and specify WordPress compatibility version
 
 = 1.1.2: March 8, 2022 =
 * fix: set pageSize to a number

@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Blocks for Eventbrite
  * Description:     Gutenberg blocks that display eventbrite events
- * Version:         1.1.2
+ * Version:         1.1.3
  * Author:          Jon Waldstein
  * Author URI:      https://jonwaldstein.com
  * License:         GPL-2.0-or-later
@@ -129,10 +129,9 @@ add_filter('block_categories', function ($categories) {
  * Register block type callback render_callback
  *
  * @param $attributes
- * @return false|string|void
+ * @return false|string
  */
 function render_blocks_for_eventbrite_card($attributes)
 {
-    $blocks = new RenderBlocksForEventbriteCard($attributes);
-    return $blocks->render();
+	return (new RenderBlocksForEventbriteCard($attributes))->render();
 }

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useEffect } from '@wordpress/element';
 import { format } from '@wordpress/date';
 import Tippy, { useSingleton } from '@tippyjs/react';
@@ -52,12 +51,12 @@ export default function Event( {
 	startDate,
 	dateFormat,
 	timeFormat,
-	image,
+	image = null,
 	status,
 	colors,
-	venue,
+	venue = null,
 	signUpButtonText,
-	className,
+	className = null,
 } ) {
 	const [ source, target ] = useSingleton();
 
@@ -345,26 +344,3 @@ export default function Event( {
 		</article>
 	);
 }
-
-Event.defaultProps = {
-	image: null,
-	venue: null,
-	className: null,
-};
-
-Event.PropTypes = {
-	id: PropTypes.string.isRequired,
-	title: PropTypes.string.isRequired,
-	url: PropTypes.string.isRequired,
-	summary: PropTypes.string.isRequired,
-	cost: PropTypes.string.isRequired,
-	startDate: PropTypes.string.isRequired,
-	dateFormat: PropTypes.string.isRequired,
-	timeFormat: PropTypes.string.isRequired,
-	image: PropTypes.string,
-	status: PropTypes.string.isRequired,
-	colors: PropTypes.string.isRequired,
-	venue: PropTypes.string,
-	signUpButtonText: PropTypes.string,
-	className: PropTypes.string,
-};
