@@ -1,5 +1,6 @@
 {
 	"name": "blocks-for-eventbrite",
+    "private": true,
 	"description": "WordPress Gutenberg blocks that display eventbrite events",
 	"author": "Jon Waldstein",
 	"license": "GPL-2.0-or-later",
@@ -10,26 +11,27 @@
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"start": "wp-scripts start",
+        "watch": "wp-scripts start",
 		"packages-update": "wp-scripts packages-update"
 	},
 	"devDependencies": {
-		"@wordpress/eslint-plugin": "^4.0.0",
-		"@wordpress/i18n": "^3.16.0",
-		"@wordpress/scripts": "^7.1.3",
-		"css-loader": "^3.4.2",
-		"cssnano": "^4.1.10",
-		"postcss-loader": "^3.0.0",
-		"postcss-nested": "^4.2.1",
-		"style-loader": "^1.1.3"
+		"@wordpress/eslint-plugin": "^22.22.0",
+		"@wordpress/i18n": "^6.9.0",
+		"@wordpress/scripts": "^31.1.0",
+		"css-loader": "^7.1.2",
+		"cssnano": "^7.0.6",
+		"postcss-loader": "^8.1.1",
+		"postcss-nested": "^7.0.2",
+		"style-loader": "^4.0.0"
 	},
 	"dependencies": {
 		"@tippyjs/react": "^4.0.0-alpha.4",
-		"axios": "^0.19.2",
+		"axios": "^1.7.9",
 		"classnames": "^2.2.6",
 		"tailwindcss": "^1.2.0"
 	},
 	"volta": {
-		"node": "16.16.0",
-		"npm": "9.3.1"
+		"node": "18.20.5",
+		"npm": "10.8.2"
 	}
 }
