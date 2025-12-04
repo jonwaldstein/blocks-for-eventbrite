@@ -339,6 +339,7 @@ export default function Event( {
 				trigger="click"
 				theme="light"
 				animation="shift-away"
+				appendTo="parent"
 				className={ cx( 'blocks-for-eventbrite-css-wrapper' ) }
 			/>
 		</article>

@@ -1,3 +1,17 @@
 .blocks-for-eventbrite-css-wrapper {
 	@import 'tailwindcss/base';
+
+	/* Ensure Tippy tooltips display correctly when appended to parent */
+	.tippy-box {
+		max-width: 300px !important;
+		white-space: normal !important;
+		overflow: visible !important;
+		text-overflow: clip !important;
+	}
+
+	.tippy-content {
+		white-space: normal !important;
+		overflow: visible !important;
+		word-wrap: break-word !important;
+	}
 }

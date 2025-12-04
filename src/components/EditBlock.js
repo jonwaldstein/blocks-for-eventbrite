@@ -27,12 +27,12 @@ const [ assets ] = getLocalizeData( 'assets' );
 const fixtureEvents = [
 	{
 		id: 1,
-		name: { text: 'Earth Day Beach Cleanup' },
-		description: { text: 'Join volunteers from across the region to help restore our coastline and protect marine wildlife.' },
-		summary: 'Community beach cleanup event with educational workshops on ocean conservation.',
+		name: { text: 'Sunset Paddle' },
+		description: { text: 'Join us for a peaceful sunset paddle on the water.' },
+		summary: 'A relaxing paddle on the water to end the day.',
 		url: '#',
-		ticket_classes: [ { cost: { display: 'Free' } } ],
-		start: { local: new Date( Date.now() + 7 * 24 * 60 * 60 * 1000 ).toISOString() },
+		ticket_classes: [ { cost: { display: '$15' } } ],
+		start: { local: new Date( Date.now() + 14 * 24 * 60 * 60 * 1000 ).toISOString() },
 		status: 'live',
 		logo: {
 			original: {
@@ -40,9 +40,9 @@ const fixtureEvents = [
 			},
 		},
 		venue: {
-			name: 'Narragansett Town Beach',
+			name: 'Quonochontaug Pond',
 			address: {
-				city: 'Narragansett',
+				city: 'Charlestown',
 				region: 'RI',
 			},
 		},
