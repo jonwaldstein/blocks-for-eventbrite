@@ -25,7 +25,7 @@
 		"style-loader": "^4.0.0"
 	},
 	"dependencies": {
-		"@tippyjs/react": "^4.0.0-alpha.4",
+		"@tippyjs/react": "^4.2.6",
 		"axios": "^1.7.9",
 		"classnames": "^2.2.6",
 		"tailwindcss": "^1.2.0"
