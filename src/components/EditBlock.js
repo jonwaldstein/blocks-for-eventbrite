@@ -14,6 +14,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { dispatch, select } from '@wordpress/data';
 import axios from 'axios';
 import { __ } from '@wordpress/i18n';
+import { getSettings as getDateSettings } from '@wordpress/date';
 import { getLocalizeData } from '../utilities';
 import EventList from '../components/EventList';
 import styles from '../style.module.css';
@@ -92,16 +93,28 @@ const fixtureEvents = [
 	},
 ];
 
+// Get WordPress date/time settings for defaults
+const dateSettings = getDateSettings();
+
+// Default values using translation and WordPress settings
+const defaultSignUpButtonText = __( 'Sign Up', 'blocks-for-eventbrite' );
+const defaultNoEventsText = __(
+	'There are no events at this time. Please check back for upcoming events.',
+	'blocks-for-eventbrite'
+);
+const defaultDateFormat = dateSettings?.formats?.date ?? 'F j, Y';
+const defaultTimeFormat = dateSettings?.formats?.time ?? 'g:i a';
+
 export default function EditBlock( { attributes, setAttributes } ) {
 	const {
 		signUpButtonBackgroundColor,
-		signUpButtonText,
+		signUpButtonText = defaultSignUpButtonText,
 		apiKey,
 		status,
 		orderBy,
-		noEventsText,
-		dateFormat,
-		timeFormat,
+		noEventsText = defaultNoEventsText,
+		dateFormat = defaultDateFormat,
+		timeFormat = defaultTimeFormat,
 		nameFilter,
 		pageSize,
 	} = attributes;

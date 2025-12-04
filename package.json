@@ -1,6 +1,6 @@
 {
 	"name": "blocks-for-eventbrite",
-    "private": true,
+	"private": true,
 	"description": "WordPress Gutenberg blocks that display eventbrite events",
 	"author": "Jon Waldstein",
 	"license": "GPL-2.0-or-later",
@@ -11,13 +11,14 @@
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"start": "wp-scripts start",
-        "watch": "wp-scripts start",
+		"watch": "wp-scripts start",
 		"packages-update": "wp-scripts packages-update"
 	},
 	"devDependencies": {
 		"@wordpress/eslint-plugin": "^22.22.0",
 		"@wordpress/i18n": "^6.9.0",
 		"@wordpress/scripts": "^31.1.0",
+		"copy-webpack-plugin": "^13.0.1",
 		"css-loader": "^7.1.2",
 		"cssnano": "^7.0.6",
 		"postcss-loader": "^8.1.1",

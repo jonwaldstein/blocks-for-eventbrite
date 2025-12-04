@@ -66,40 +66,10 @@ add_action('init', function () {
         ]
     );
 
-    register_block_type('blocks-for-eventbrite/events-card', array(
-        'editor_script' => BLOCKS_FOR_EVENTBRITE_SCRIPT_NAME,
+    // Register block using block.json with dynamic overrides
+    register_block_type(__DIR__ . '/build/blocks/event-cards', [
         'render_callback' => 'render_blocks_for_eventbrite_card',
-        'attributes' => [
-            'status' => [
-                'type' => 'string',
-                'default' => 'live',
-            ],
-            'orderBy' => [
-                'type' => 'string',
-                'default' => 'start_asc',
-            ],
-            'noEventsText' => [
-                'type' => 'string',
-                'default' => 'There are no events at this time. Please check back for upcoming events.'
-            ],
-            'dateFormat' => [
-                'type' => 'string',
-                'default' => get_option('date_format')
-            ],
-            'timeFormat' => [
-                'type' => 'string',
-                'default' => get_option('time_format')
-            ],
-            'signUpButtonText' => [
-                'type' => 'string',
-                'default' => 'Sign Up'
-            ],
-            'pageSize' => [
-                'type' => 'number',
-                'default' => 50
-            ],
-        ]
-    ));
+    ]);
 });
 
 /**
@@ -110,7 +80,7 @@ add_action('init', function () {
  * @return array
  */
 
-add_filter('block_categories', function ($categories) {
+add_filter('block_categories_all', function ($categories) {
     $category_slugs = wp_list_pluck($categories, 'slug');
 
     return in_array('blocks-for-eventbrite', $category_slugs, true) ? $categories : array_merge(

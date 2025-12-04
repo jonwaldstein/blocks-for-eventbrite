@@ -5,73 +5,15 @@
  */
 import { registerBlockType } from '@wordpress/blocks';
 import EditBlock from '../../components/EditBlock';
-import attributes from './attributes';
-
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
- */
-import { __ } from '@wordpress/i18n';
+import metadata from './block.json';
 
 /**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType( 'blocks-for-eventbrite/events-card', {
-	/**
-	 * This is the display title for your block, which can be translated with `i18n` functions.
-	 * The block inserter will show this name.
-	 */
-	title: __( 'Eventbrite Event Cards', 'blocks-for-eventbrite' ),
-
-	/**
-	 * This is a short description for your block, can be translated with `i18n` functions.
-	 * It will be shown in the Block Tab in the Settings Sidebar.
-	 */
-	description: __(
-		'Display eventbrite events on your website.',
-		'blocks-for-eventbrite'
-	),
-
-	/**
-	 * Blocks are grouped into categories to help users browse and discover them.
-	 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
-	 */
-	category: 'blocks-for-eventbrite',
-
-	/**
-	 * An icon property should be specified to make it easier to identify a block.
-	 * These can be any of WordPress’ Dashicons, or a custom svg element.
-	 */
-	icon: 'calendar-alt',
-
-	/** Make it easier to discover a block with keyword aliases.
-	 * These can be localised so your keywords work across locales.
-	 */
-	keywords: [
-		__( 'events', 'blocks-for-eventbrite' ),
-		__( 'eventbrite', 'blocks-for-eventbrite' ),
-	],
-
-	/**
-	 * Optional block extended support features.
-	 */
-	supports: {
-		// Removes support for an HTML mode.
-		html: false,
-		// Use the block just once per post
-		multiple: false,
-		// Don't allow the block to be converted into a reusable block.
-		reusable: false,
-	},
-
-	/**
-	 * block attributes
-	 */
-	attributes,
-
+registerBlockType( metadata.name, {
+	...metadata,
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
 	 * This represents what the editor will render when the block is used.
