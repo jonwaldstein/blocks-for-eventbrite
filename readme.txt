@@ -4,7 +4,7 @@ Donate link:       https://www.paypal.com/paypalme/jonwaldstein
 Tags:              eventbrite, events, block, gutenberg, tickets
 Requires at least: 6.6
 Tested up to:      6.9
-Stable tag:        1.1.3
+Stable tag:        1.1.4
 Requires PHP:      7.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -109,6 +109,9 @@ Yes! The plugin is maintained and updated for WordPress compatibility. Check the
 4. Embedded checkout modal for seamless registration
 
 == Changelog ==
+
+= 1.1.4: December 4, 2025 =
+* Maintenance: updated for WordPress 6.9 compatibility
 
 = 1.1.3: August 20, 2024 =
 * Maintenance update and WordPress 6.6 compatibility verification
