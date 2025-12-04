@@ -16,51 +16,51 @@ const filteredRules = defaultConfig.module.rules.filter( ( rule ) => {
 
 module.exports = {
 	...defaultConfig,
-	module: {
-		...defaultConfig.module,
-		rules: [
-			...filteredRules,
-			// Non-module CSS (including tippy.js, base.css, etc.)
-			{
-				test: /^(?!.*?\.module).*\.css$/,
-				use: [
-					{
-						loader: 'style-loader',
-						options: {
-							injectType: 'singletonStyleTag',
-							attributes: { id: 'blocks-for-eventbrite-css' },
-						},
-					},
-					{
-						loader: 'css-loader',
-						options: { importLoaders: 1 },
-					},
-					{
-						loader: 'postcss-loader',
-					},
-				],
-			},
-			// CSS Modules
-			{
-				test: /\.module\.css$/,
-				use: [
-					{
-						loader: 'style-loader',
-					},
-					{
-						loader: 'css-loader',
-						options: {
-							importLoaders: 1,
-							modules: {
-								localIdentName: '[local]',
-							},
-						},
-					},
-					{
-						loader: 'postcss-loader',
-					},
-				],
-			},
-		],
-	},
+    // module: {
+	// 	...defaultConfig.module,
+	// 	rules: [
+	// 		...filteredRules,
+	// 		// Non-module CSS (including tippy.js, base.css, etc.)
+	// 		{
+	// 			test: /^(?!.*?\.module).*\.css$/,
+	// 			use: [
+	// 				{
+	// 					loader: 'style-loader',
+	// 					options: {
+	// 						injectType: 'singletonStyleTag',
+	// 						attributes: { id: 'blocks-for-eventbrite-css' },
+	// 					},
+	// 				},
+	// 				{
+	// 					loader: 'css-loader',
+	// 					options: { importLoaders: 1 },
+	// 				},
+	// 				{
+	// 					loader: 'postcss-loader',
+	// 				},
+	// 			],
+	// 		},
+	// 		// CSS Modules
+	// 		{
+	// 			test: /\.module\.css$/,
+	// 			use: [
+	// 				{
+	// 					loader: 'style-loader',
+	// 				},
+	// 				{
+	// 					loader: 'css-loader',
+	// 					options: {
+	// 						importLoaders: 1,
+	// 						modules: {
+	// 							localIdentName: '[local]',
+	// 						},
+	// 					},
+	// 				},
+	// 				{
+	// 					loader: 'postcss-loader',
+	// 				},
+	// 			],
+	// 		},
+	// 	],
+	// },
 };

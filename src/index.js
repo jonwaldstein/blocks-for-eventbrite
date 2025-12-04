@@ -1,4 +1,4 @@
-import { render } from '@wordpress/element';
+import { createRoot } from '@wordpress/element';
 import domReady from '@wordpress/dom-ready';
 
 import EventList from './components/EventList';
@@ -17,10 +17,8 @@ function App() {
 }
 
 domReady( function() {
-	if ( document.getElementById( 'root-blocks-for-eventbrite' ) ) {
-		render(
-			<App />,
-			document.getElementById( 'root-blocks-for-eventbrite' )
-		);
+    const root = document.getElementById( 'root-blocks-for-eventbrite' );
+	if ( root ) {
+		createRoot( root ).render( <App /> );
 	}
 } );

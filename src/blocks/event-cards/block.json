@@ -51,6 +51,6 @@
 			"default": 50
 		}
 	},
-	"editorScript": "blocks-for-eventbrite-script"
+	"editorScript": "blocks-for-eventbrite-script",
+	"style": ["file:../../../build/index.css", "file:../../../build/style-index.css"]
 }
-
