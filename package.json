@@ -19,11 +19,8 @@
 		"@wordpress/i18n": "^6.9.0",
 		"@wordpress/scripts": "^31.1.0",
 		"copy-webpack-plugin": "^13.0.1",
-		"css-loader": "^7.1.2",
-		"cssnano": "^7.0.6",
-		"postcss-loader": "^8.1.1",
-		"postcss-nested": "^7.0.2",
-		"style-loader": "^4.0.0"
+        "cssnano": "^7.1.2",
+        "postcss-nested": "^7.0.2"
 	},
 	"dependencies": {
 		"@tippyjs/react": "^4.2.6",
