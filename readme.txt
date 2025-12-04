@@ -104,9 +104,8 @@ Yes! The plugin is maintained and updated for WordPress compatibility. Check the
 
 == Screenshots ==
 
-1. Event card display showing date, title, venue, price, and action buttons
-2. Block settings panel with API configuration and display options
-3. Live preview in the Gutenberg editor
+1. Event card block preview with many avialable settings
+2. Event card block displaying events on a website
 4. Embedded checkout modal for seamless registration
 
 == Changelog ==

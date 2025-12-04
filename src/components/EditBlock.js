@@ -15,13 +15,82 @@ import { dispatch, select } from '@wordpress/data';
 import axios from 'axios';
 import { __ } from '@wordpress/i18n';
 import { getLocalizeData } from '../utilities';
-import Event from '../components/Event';
+import EventList from '../components/EventList';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind( styles );
 
 const [ assets ] = getLocalizeData( 'assets' );
+
+const fixtureEvents = [
+	{
+		id: 1,
+		name: { text: 'Earth Day Beach Cleanup' },
+		description: { text: 'Join volunteers from across the region to help restore our coastline and protect marine wildlife.' },
+		summary: 'Community beach cleanup event with educational workshops on ocean conservation.',
+		url: '#',
+		ticket_classes: [ { cost: { display: 'Free' } } ],
+		start: { local: new Date( Date.now() + 7 * 24 * 60 * 60 * 1000 ).toISOString() },
+		status: 'live',
+		logo: {
+			original: {
+				url: assets?.placeholderImage || 'https://placekitten.com/500/500',
+			},
+		},
+		venue: {
+			name: 'Narragansett Town Beach',
+			address: {
+				city: 'Narragansett',
+				region: 'RI',
+			},
+		},
+	},
+	{
+		id: 2,
+		name: { text: 'Native Tree Planting Workshop' },
+		description: { text: 'Learn sustainable planting techniques and help reforest our local parks with native species.' },
+		summary: 'Hands-on workshop covering native plant identification, soil preparation, and proper planting methods.',
+		url: '#',
+		ticket_classes: [ { cost: { display: '$15' } } ],
+		start: { local: new Date( Date.now() + 14 * 24 * 60 * 60 * 1000 ).toISOString() },
+		status: 'live',
+		logo: {
+			original: {
+				url: assets?.placeholderImage || 'https://placekitten.com/500/500',
+			},
+		},
+		venue: {
+			name: 'Blackstone Valley Nature Center',
+			address: {
+				city: 'Lincoln',
+				region: 'RI',
+			},
+		},
+	},
+	{
+		id: 3,
+		name: { text: 'Climate Action Fundraiser Gala' },
+		description: { text: 'An elegant evening supporting renewable energy initiatives and environmental education programs.' },
+		summary: 'Annual fundraiser featuring local sustainable catering, silent auction, and keynote speakers.',
+		url: '#',
+		ticket_classes: [ { cost: { display: '$75' } } ],
+		start: { local: new Date( Date.now() + 21 * 24 * 60 * 60 * 1000 ).toISOString() },
+		status: 'live',
+		logo: {
+			original: {
+				url: assets?.placeholderImage || 'https://placekitten.com/500/500',
+			},
+		},
+		venue: {
+			name: 'Providence Botanical Gardens',
+			address: {
+				city: 'Providence',
+				region: 'RI',
+			},
+		},
+	},
+];
 
 export default function EditBlock( { attributes, setAttributes } ) {
 	const {
@@ -395,42 +464,13 @@ export default function EditBlock( { attributes, setAttributes } ) {
 					<div className="blocks-for-eventbrite-css-wrapper">
 						<p className={ cx( 'font-sans', 'text-center' ) }>
 							{ __(
-								'This is a static preview of how your event card will look.  Each event pulled from your Eventbrite account will be displayed in this format on the frontend of your website.',
+								'This is a static preview of how your event cards will look. Each event pulled from your Eventbrite account will be displayed in this format on the frontend of your website.',
 								'blocks-for-eventbrite'
 							) }
 						</p>
-						<Event
-							className={ cx( 'mx-auto' ) }
-							title={ __(
-								'Event Title',
-								'blocks-for-eventbrite'
-							) }
-							description={ 'Event description' }
-							summary={ 'Event description summary' }
-							cost={ '$25' }
-							startDate={ new Date() }
-							dateFormat={ dateFormat }
-							timeFormat={ timeFormat }
-							image={
-								assets?.placeholderImage
-									? assets?.placeholderImage
-									: 'https://placekitten.com/500/500'
-							}
-							status={ 'live' }
-							colors={ {
-								signUpButtonBackgroundColor,
-							} }
-							signUpButtonText={ signUpButtonText }
-							venue={ {
-								name: __(
-									'Venue name',
-									'blocks-for-eventbrite'
-								),
-								address: {
-									city: 'Providence',
-									region: 'RI',
-								},
-							} }
+						<EventList
+							events={ fixtureEvents }
+							attributes={ attributes }
 						/>
 					</div>
 				) }
