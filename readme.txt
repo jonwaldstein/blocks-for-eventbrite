@@ -110,7 +110,7 @@ Yes! The plugin is maintained and updated for WordPress compatibility. Check the
 
 == Changelog ==
 
-= 1.1.4: December 4, 2025 =
+= 1.1.4: December 6, 2025 =
 * Maintenance: updated for WordPress 6.9 compatibility
 
 = 1.1.3: August 20, 2024 =
