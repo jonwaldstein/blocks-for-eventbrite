@@ -4,7 +4,7 @@ Donate link:       https://www.paypal.com/paypalme/jonwaldstein
 Tags:              eventbrite, events, block, gutenberg, tickets
 Requires at least: 6.6
 Tested up to:      6.9
-Stable tag:        1.1.4
+Stable tag:        1.1.5
 Requires PHP:      7.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -106,9 +106,12 @@ Yes! The plugin is maintained and updated for WordPress compatibility. Check the
 
 1. Event card block preview with many avialable settings
 2. Event card block displaying events on a website
-4. Embedded checkout modal for seamless registration
+3. Embedded checkout modal for seamless registration
 
 == Changelog ==
+
+= 1.1.5: December 6, 2025 =
+* Fix: resolved an issue with block default values
 
 = 1.1.4: December 6, 2025 =
 * Maintenance: updated for WordPress 6.9 compatibility

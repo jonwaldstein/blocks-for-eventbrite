@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Blocks for Eventbrite
  * Description:     Showcase Eventbrite events with modern design and embedded checkout.
- * Version:         1.1.4
+ * Version:         1.1.5
  * Author:          Jon Waldstein
  * Author URI:      https://jonwaldstein.com
  * License:         GPL-2.0-or-later
