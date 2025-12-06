@@ -14,8 +14,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { dispatch, select } from '@wordpress/data';
 import axios from 'axios';
 import { __ } from '@wordpress/i18n';
-import { getSettings as getDateSettings } from '@wordpress/date';
-import { getLocalizeData } from '../utilities';
+import { getLocalizeData, getDefaultAttributes } from '../utilities';
 import EventList from '../components/EventList';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
@@ -93,30 +92,6 @@ const fixtureEvents = [
 	},
 ];
 
-
-
-const getDefaultAttributes = (attributes = {}) => {
-    // Get WordPress date/time settings for defaults
-    const dateSettings = getDateSettings();
-
-    // Default values using translation and WordPress settings
-    const defaultSignUpButtonText = __( 'Sign Up', 'blocks-for-eventbrite' );
-    const defaultNoEventsText = __(
-        'There are no events at this time. Please check back for upcoming events.',
-        'blocks-for-eventbrite'
-    );
-    const defaultDateFormat = dateSettings?.formats?.date ?? 'F j, Y';
-    const defaultTimeFormat = dateSettings?.formats?.time ?? 'g:i a';
-
-	return {
-		...attributes,
-		signUpButtonText: attributes?.signUpButtonText ?? defaultSignUpButtonText,
-		noEventsText: attributes?.noEventsText ?? defaultNoEventsText,
-		dateFormat: attributes?.dateFormat ?? defaultDateFormat,
-		timeFormat: attributes?.timeFormat ?? defaultTimeFormat,
-	};
-};
-
 export default function EditBlock( { attributes, setAttributes } ) {
 	const {
 		signUpButtonBackgroundColor,
@@ -129,7 +104,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 		timeFormat,
 		nameFilter,
 		pageSize,
-	} = getDefaultAttributes(attributes);
+	} = getDefaultAttributes( attributes );
 
 	const [ apiKeyState, setApiKeyState ] = useState( apiKey );
 	const [ apiKeyLoading, setApiKeyLoading ] = useState( false );
@@ -495,7 +470,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 						</p>
 						<EventList
 							events={ fixtureEvents }
-							attributes={ getDefaultAttributes(attributes) }
+							attributes={ getDefaultAttributes( attributes ) }
 						/>
 					</div>
 				) }
