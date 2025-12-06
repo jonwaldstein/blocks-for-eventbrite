@@ -9,13 +9,13 @@ Requires PHP:      7.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Display your Eventbrite events beautifully on WordPress — no database bloat, no syncing headaches, just a seamless integration.
+Blocks that display Eventbrite events with a modern design without importing.  The embedded checkout integration allows visitors to register and pay without ever leaving your website.
 
 == Description ==
 
 **The simplest way to showcase Eventbrite events on your WordPress site.**
 
-Tired of bloated event plugins that create hundreds of database entries? Blocks for Eventbrite takes a different approach. Your events live on Eventbrite where they belong — this plugin simply displays them with a beautiful, modern design.
+This plugin helps bridge the gap between WordPress and Eventbrite, while retaining the great user experience that Eventbrite provides.  Your events live on Eventbrite where they belong — this plugin simply displays them with a beautiful, modern design.
 
 ### Why Choose Blocks for Eventbrite?
 
