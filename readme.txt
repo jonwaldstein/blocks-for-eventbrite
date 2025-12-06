@@ -9,7 +9,7 @@ Requires PHP:      7.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Blocks that display Eventbrite events with a modern design without importing.  The embedded checkout integration allows visitors to register and pay without ever leaving your website.
+Display Eventbrite events with a modern design without importing them into WordPress. The embedded checkout integration allows visitors to register and pay without ever leaving your website.
 
 == Description ==
 
