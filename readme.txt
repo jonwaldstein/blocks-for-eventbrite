@@ -1,91 +1,168 @@
 === Blocks for Eventbrite ===
 Contributors:      jonwaldstein
 Donate link:       https://www.paypal.com/paypalme/jonwaldstein
-Tags:              eventbrite, events, block
-Requires at least: 5.3
-Tested up to:      6.6
-Stable tag:        1.1.3
+Tags:              eventbrite, events, block, gutenberg, tickets
+Requires at least: 6.6
+Tested up to:      6.9
+Stable tag:        1.1.4
 Requires PHP:      7.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Gutenberg blocks that display eventbrite events.
+Display Eventbrite events with a modern design without importing them into WordPress. The embedded checkout integration allows visitors to register and pay without ever leaving your website.
 
 == Description ==
-Managing events on WordPress can be a challenge.  These days we have many great solutions for managing our events outside of WordPress like Eventbrite.  This plugin helps bridge the gap between the two platforms while retaining the great user interface and experience that Eventbrite provides.
 
-### Features:
-- Utilizes Eventbrite's *embedded checkout* experience meaning if your website is secure with an SSL, the sign up button will let users pay and/or signup without leaving your website.
-- Provides an event *status* selector to choose between live, draft, and all events.
-- Provides an *order by* selector to choose the order you would like your events to be displayed in.
-- Provides ability to change the *sign up* button color
-- Gives users ability to view event description summary by clicking *details*
-- Gives users ability to click on title and navigate to appropriate Eventbrite url
-- Saves events in WordPress cache (transients) every 1 minute upon page request.
+**The simplest way to showcase Eventbrite events on your WordPress site.**
+
+This plugin helps bridge the gap between WordPress and Eventbrite, while retaining the great user experience that Eventbrite provides.  Your events live on Eventbrite where they belong — this plugin simply displays them with a beautiful, modern design.
+
+### Why Choose Blocks for Eventbrite?
+
+**🪶 Truly Lightweight**
+Unlike traditional event plugins, we don't create WordPress posts, custom tables, or complex database structures. Your events are fetched directly from Eventbrite and intelligently cached for blazing-fast performance.
+
+**🛒 Seamless Checkout Experience**
+Using Eventbrite's embedded checkout, visitors can register and pay without ever leaving your website (SSL required). No redirects, no friction — just conversions.
+
+**🎨 Beautiful Out of the Box**
+Modern card-based design with clean typography, subtle shadows, and smooth hover effects. Each event displays the image, date, venue, price, and a quick-details tooltip — all styled to look great on any theme.
+
+**⚡ Smart Caching**
+Events are cached using WordPress transients, refreshing every minute. Your site stays fast while always showing up-to-date event information.
+
+### Features
+
+* **Native Gutenberg Block** — Just add the block and paste your API key
+* **Embedded Checkout** — Let visitors register without leaving your site
+* **Event Status Filter** — Display live, draft, or all events
+* **Flexible Sorting** — Order by start date or event name (ascending/descending)
+* **Event Name Filter** — Show only events matching specific keywords
+* **Limit Events Displayed** — Control exactly how many events appear
+* **Custom Button Styling** — Match your brand with custom colors and text
+* **Date & Time Formatting** — Use WordPress formatting or customize your own
+* **Quick Details Tooltip** — Visitors can preview event summaries instantly
+* **Venue Information** — Automatically displays location details when available
+* **Live Editor Preview** — See exactly how your events will look while editing
+* **Translation Ready** — Fully internationalized for global sites
+* **No Database Bloat** — Zero custom posts, zero custom tables
+
+### Perfect For
+
+* Event organizers who manage events on Eventbrite
+* Businesses that host regular workshops, classes, or meetups
+* Nonprofits promoting fundraisers and community events
+* Anyone who wants events on WordPress without the maintenance headache
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/blocks-for-eventbrite` directory, or install the plugin through the WordPress plugins screen directly.
-2. Activate the plugin through the 'Plugins' screen in WordPress
-3. In gutenberg, add one of our blocks and insert your Eventbrite api token key in the block settings.
-4. Click 'Save Api Key`.
-5. If your api key is valid it will be saved to your block and your events will be displayed on the front-end of your site!
+1. Upload the plugin files to `/wp-content/plugins/blocks-for-eventbrite`, or install directly through the WordPress plugins screen
+2. Activate the plugin through the 'Plugins' screen
+3. Create or edit a page/post and add the "Events Card" block from the Eventbrite category
+4. Enter your Eventbrite API token key in the block settings panel
+5. Click 'Save Api Key' — if valid, you'll see your organization name confirmed
+6. Customize the display options to your liking
+7. Publish and watch your events appear beautifully!
 
 == Frequently Asked Questions ==
 
-= What are the requirements to use this plugin? =
-First, you need to have an Eventbrite account.  This account should be an organizer that has permission to manage events.  Then you just need to grab your api key so the block can fetch your events.
+= What do I need to use this plugin? =
 
-= Where do I get an api key? =
-As long as you have an Eventbrite account you can get the api token key [here](https://www.eventbrite.com/platform/api-keys/):  https://www.eventbrite.com/platform/api-keys/
+Just an Eventbrite account with organizer permissions. The plugin connects directly to your Eventbrite organization to pull your events.
+
+= Where do I get an API key? =
+
+Log into Eventbrite and visit [eventbrite.com/platform/api-keys](https://www.eventbrite.com/platform/api-keys/) to generate your private token.
+
+= Will this slow down my site? =
+
+No! Events are cached locally and only refreshed once per minute. Your pages load from cache, not from Eventbrite's servers on every request.
+
+= Does the checkout really work without leaving my site? =
+
+Yes — as long as your site has an SSL certificate (https://), visitors can complete their registration and payment in a modal overlay. No redirects needed.
+
+= Can I display events from multiple Eventbrite accounts? =
+
+Each block connects to one Eventbrite account. You can add multiple blocks with different API keys if needed.
+
+= Does this create posts or custom post types? =
+
+No. That's the beauty of this plugin — your WordPress database stays clean. Events are fetched from Eventbrite and displayed dynamically.
+
+= Can I filter which events are shown? =
+
+Absolutely. Filter by event status (live/draft/all), sort order, event name keywords, and limit the total number displayed.
+
+= Will this work with my theme? =
+
+The plugin uses a self-contained design that works well with most themes. The card styling is intentionally neutral to blend with various designs.
+
+= Is this plugin actively maintained? =
+
+Yes! The plugin is maintained and updated for WordPress compatibility. Check the changelog for recent updates.
 
 == Screenshots ==
-1. Eventbrite Event Card
+
+1. Event card block preview with many avialable settings
+2. Event card block displaying events on a website
+4. Embedded checkout modal for seamless registration
 
 == Changelog ==
 
+= 1.1.4: December 4, 2025 =
+* Maintenance: updated for WordPress 6.9 compatibility
+
 = 1.1.3: August 20, 2024 =
-* update: housekeeping updates and specify WordPress compatibility version
+* Maintenance update and WordPress 6.6 compatibility verification
 
 = 1.1.2: March 8, 2022 =
-* fix: set pageSize to a number
+* Fix: Page size parameter now correctly set as number type
 
 = 1.1.0: May 20, 2021 =
-* add: button text field to customize button text
-* add: event number limit field to limit the number of events displayed
+* New: Custom button text field
+* New: Event number limit to control how many events display
 
 = 1.0.10: April 12, 2021 =
-* fix: Replaced "grey" with "gray" in classnames
-* fix: added active text states
-* fix: adjusted details link style to remove outline and make background transparent
-* add: added more css classnames to elements for users to customize elements
+* Fix: Corrected "grey" to "gray" in class names for consistency
+* Fix: Added active text states for better accessibility
+* Fix: Details link now has transparent background and no outline
+* New: Additional CSS class names for easier custom styling
 
 = 1.0.9: April 11, 2021 =
-* fix: field labels and update readme
+* Improved field labels and documentation
 
 = 1.0.8: April 11, 2021 =
-* add: date and time formatting options
+* New: Date and time formatting options using WordPress standards
 
 = 1.0.7 =
-* fix: php error
+* Fix: Resolved PHP error
 
-1.0.6 =
-* add: Internationalization
+= 1.0.6 =
+* New: Full internationalization support
 
 = 1.0.5 =
-* change: get organization id from /v3/users/me/organizations/ endpoint
+* Changed: Now fetches organization ID from /v3/users/me/organizations/ endpoint
 
 = 1.0.4 =
-* fix: bring back name_filter after removing by accident
+* Fix: Restored name_filter functionality
 
 = 1.0.3 =
-* change: events api request to use /v3/organizations/id/events/ endpoint
+* Changed: Events API now uses /v3/organizations/id/events/ endpoint for better reliability
 
 = 1.0.2 =
-* add: name_filter to eventbrite settings to filter by event title keywords
+* New: Name filter to show only events matching title keywords
 
 = 1.0.1 =
-* fix: conditionally display venue details to prevent event from not displaying
+* Fix: Venue details now display conditionally to prevent rendering issues
 
 = 1.0.0 =
-* Release
+* Initial release
+
+== Upgrade Notice ==
+
+= 1.1.3 =
+Maintenance update confirming WordPress 6.6 compatibility. Safe to update.
+
+= 1.1.0 =
+New features! You can now customize button text and limit the number of events displayed.

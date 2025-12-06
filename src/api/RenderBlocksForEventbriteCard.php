@@ -16,7 +16,10 @@ class RenderBlocksForEventbriteCard
     {
         $this->attributes = $attributes;
         $this->transientKey = $this->getTransientKey();
-        $this->transient = get_transient($this->transientKey);
+        $this->transient = get_transient($this->transientKey) ?? [
+            'events' => [],
+            'attributes' => [],
+        ];
     }
 
     /**

@@ -1,0 +1,56 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "blocks-for-eventbrite/events-card",
+	"title": "Eventbrite Event Cards",
+	"category": "blocks-for-eventbrite",
+	"description": "Display eventbrite events on your website.",
+	"icon": "calendar-alt",
+	"keywords": [ "events", "eventbrite" ],
+	"textdomain": "blocks-for-eventbrite",
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"attributes": {
+		"id": {
+			"type": "number"
+		},
+		"apiKey": {
+			"type": "string"
+		},
+		"status": {
+			"type": "string",
+			"default": "live"
+		},
+		"orderBy": {
+			"type": "string",
+			"default": "start_asc"
+		},
+		"signUpButtonBackgroundColor": {
+			"type": "string"
+		},
+		"signUpButtonText": {
+			"type": "string"
+		},
+		"noEventsText": {
+			"type": "string"
+		},
+		"nameFilter": {
+			"type": "string"
+		},
+		"dateFormat": {
+			"type": "string"
+		},
+		"timeFormat": {
+			"type": "string"
+		},
+		"pageSize": {
+			"type": "number",
+			"default": 50
+		}
+	},
+	"editorScript": "blocks-for-eventbrite-script",
+	"style": ["file:../../../build/index.css", "file:../../../build/style-index.css"]
+}

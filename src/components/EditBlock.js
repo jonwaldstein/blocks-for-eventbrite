@@ -14,14 +14,108 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { dispatch, select } from '@wordpress/data';
 import axios from 'axios';
 import { __ } from '@wordpress/i18n';
+import { getSettings as getDateSettings } from '@wordpress/date';
 import { getLocalizeData } from '../utilities';
-import Event from '../components/Event';
+import EventList from '../components/EventList';
 import styles from '../style.module.css';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind( styles );
 
 const [ assets ] = getLocalizeData( 'assets' );
+
+const fixtureEvents = [
+	{
+		id: 1,
+		name: { text: 'Sunset Paddle' },
+		description: { text: 'Join us for a peaceful sunset paddle on the water.' },
+		summary: 'A relaxing paddle on the water to end the day.',
+		url: '#',
+		ticket_classes: [ { cost: { display: '$15' } } ],
+		start: { local: new Date( Date.now() + 14 * 24 * 60 * 60 * 1000 ).toISOString() },
+		status: 'live',
+		logo: {
+			original: {
+				url: assets?.placeholderImage || 'https://placekitten.com/500/500',
+			},
+		},
+		venue: {
+			name: 'Quonochontaug Pond',
+			address: {
+				city: 'Charlestown',
+				region: 'RI',
+			},
+		},
+	},
+	{
+		id: 2,
+		name: { text: 'Native Tree Planting Workshop' },
+		description: { text: 'Learn sustainable planting techniques and help reforest our local parks with native species.' },
+		summary: 'Hands-on workshop covering native plant identification, soil preparation, and proper planting methods.',
+		url: '#',
+		ticket_classes: [ { cost: { display: '$15' } } ],
+		start: { local: new Date( Date.now() + 14 * 24 * 60 * 60 * 1000 ).toISOString() },
+		status: 'live',
+		logo: {
+			original: {
+				url: assets?.placeholderImage || 'https://placekitten.com/500/500',
+			},
+		},
+		venue: {
+			name: 'Blackstone Valley Nature Center',
+			address: {
+				city: 'Lincoln',
+				region: 'RI',
+			},
+		},
+	},
+	{
+		id: 3,
+		name: { text: 'Climate Action Fundraiser Gala' },
+		description: { text: 'An elegant evening supporting renewable energy initiatives and environmental education programs.' },
+		summary: 'Annual fundraiser featuring local sustainable catering, silent auction, and keynote speakers.',
+		url: '#',
+		ticket_classes: [ { cost: { display: '$75' } } ],
+		start: { local: new Date( Date.now() + 21 * 24 * 60 * 60 * 1000 ).toISOString() },
+		status: 'live',
+		logo: {
+			original: {
+				url: assets?.placeholderImage || 'https://placekitten.com/500/500',
+			},
+		},
+		venue: {
+			name: 'Providence Botanical Gardens',
+			address: {
+				city: 'Providence',
+				region: 'RI',
+			},
+		},
+	},
+];
+
+
+
+const getDefaultAttributes = (attributes = {}) => {
+    // Get WordPress date/time settings for defaults
+    const dateSettings = getDateSettings();
+
+    // Default values using translation and WordPress settings
+    const defaultSignUpButtonText = __( 'Sign Up', 'blocks-for-eventbrite' );
+    const defaultNoEventsText = __(
+        'There are no events at this time. Please check back for upcoming events.',
+        'blocks-for-eventbrite'
+    );
+    const defaultDateFormat = dateSettings?.formats?.date ?? 'F j, Y';
+    const defaultTimeFormat = dateSettings?.formats?.time ?? 'g:i a';
+
+	return {
+		...attributes,
+		signUpButtonText: attributes?.signUpButtonText ?? defaultSignUpButtonText,
+		noEventsText: attributes?.noEventsText ?? defaultNoEventsText,
+		dateFormat: attributes?.dateFormat ?? defaultDateFormat,
+		timeFormat: attributes?.timeFormat ?? defaultTimeFormat,
+	};
+};
 
 export default function EditBlock( { attributes, setAttributes } ) {
 	const {
@@ -35,7 +129,7 @@ export default function EditBlock( { attributes, setAttributes } ) {
 		timeFormat,
 		nameFilter,
 		pageSize,
-	} = attributes;
+	} = getDefaultAttributes(attributes);
 
 	const [ apiKeyState, setApiKeyState ] = useState( apiKey );
 	const [ apiKeyLoading, setApiKeyLoading ] = useState( false );
@@ -393,44 +487,15 @@ export default function EditBlock( { attributes, setAttributes } ) {
 					</div>
 				) : (
 					<div className="blocks-for-eventbrite-css-wrapper">
-						<p className={ cx( 'font-sans', 'text-center' ) }>
+						<p className={ cx( 'font-sans', 'text-center', 'max-w-screen-md', 'mx-auto', 'mb-4' ) }>
 							{ __(
-								'This is a static preview of how your event card will look.  Each event pulled from your Eventbrite account will be displayed in this format on the frontend of your website.',
+								'This is a static preview of how your event cards will look. Each event pulled from your Eventbrite account will be displayed in this format on the frontend of your website.',
 								'blocks-for-eventbrite'
 							) }
 						</p>
-						<Event
-							className={ cx( 'mx-auto' ) }
-							title={ __(
-								'Event Title',
-								'blocks-for-eventbrite'
-							) }
-							description={ 'Event description' }
-							summary={ 'Event description summary' }
-							cost={ '$25' }
-							startDate={ new Date() }
-							dateFormat={ dateFormat }
-							timeFormat={ timeFormat }
-							image={
-								assets?.placeholderImage
-									? assets?.placeholderImage
-									: 'https://placekitten.com/500/500'
-							}
-							status={ 'live' }
-							colors={ {
-								signUpButtonBackgroundColor,
-							} }
-							signUpButtonText={ signUpButtonText }
-							venue={ {
-								name: __(
-									'Venue name',
-									'blocks-for-eventbrite'
-								),
-								address: {
-									city: 'Providence',
-									region: 'RI',
-								},
-							} }
+						<EventList
+							events={ fixtureEvents }
+							attributes={ getDefaultAttributes(attributes) }
 						/>
 					</div>
 				) }
